@@ -22,3 +22,11 @@ Route::get('/restaurants', function () {
 Route::get('/about', function () {
     return "This is going to be our about us page";
 });
+
+Route::get('/howto', function() {
+    return "This is going to be our how to book page";
+});
+
+Route::get('/FAQ', function() {
+    return "This is going to be our FAQ page";
+});
