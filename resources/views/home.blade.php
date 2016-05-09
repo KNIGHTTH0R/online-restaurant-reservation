@@ -6,47 +6,47 @@
 	
 <!-- Number of persons -->
 	
-<div class="person-date-select"  style="padding-left: 150px; display: inline-block;">
-    <div style="display:inline-block">
-	<select class="form-control">
-		<option value="1">Reserve For 1</option>
-		<option value="2">Reserve For 2</option>
-		<option value="3">Reserve For 3</option>
-		<option value="4">Reserve For 4</option>
-		<option value="5">Reserve For 5</option>
-        </select>
-    </div>
+	<div class="person-date-select"  style="padding-left: 150px; display: inline-block;">
+   	<div style="display:inline-block">
+			<select class="form-control">
+				<option value="1">Reserve For 1</option>
+				<option value="2">Reserve For 2</option>
+				<option value="3">Reserve For 3</option>
+				<option value="4">Reserve For 4</option>
+				<option value="5">Reserve For 5</option>
+       	</select>
+    	</div>
 			
-    <div style="display:inline-block;">
+    	<div style="display:inline-block;">
     <!-- datepicker -->
-	<div class="container" style="display:inline-block; width:180px">
+			<div class="container" style="display:inline-block; width:180px">
             <div class="hero-unit" style="width:180px">
-		<input  type="text" placeholder="choose date"  id="example1">
-	    </div>
+					<input  type="text" placeholder="choose date"  id="example1">
+	    		</div>
+			</div>
+    	</div>
 	</div>
-    </div>
-    </div>
 		
 		<!-- time selection -->
-		<div style="display:inline-block;">
-			<select class="form-control">
-				<option value="1">07:00PM</option>
-				<option value="2">07:30PM</option>
-				<option value="3">08:00PM</option>
-				<option value="4">08:30PM</option>
-				<option value="5">09:00PM</option>
-			</select>	
-		</div>
+	<div style="display:inline-block;">
+		<select class="form-control">
+			<option value="1">07:00PM</option>
+			<option value="2">07:30PM</option>
+			<option value="3">08:00PM</option>
+			<option value="4">08:30PM</option>
+			<option value="5">09:00PM</option>
+		</select>	
+	</div>
 		
 		<!-- Input restaurant name -->
-		<div class="form-group" style="display:inline-block">
-			<input type="text" style="display:inline-block" class="form-control" id="usr" placeholder="Restaurant Name">
-		</div>
+	<div class="form-group" style="display:inline-block">
+		<input type="text" style="display:inline-block" class="form-control" id="usr" placeholder="Restaurant Name">
+	</div>
 		
 		<!-- Input location -->
-		<div class="form-group" style="display:inline-block">
-			<input type="text" style="display:inline-block" class="form-control" id="usr" placeholder="Location">
-		</div>
+	<div class="form-group" style="display:inline-block">
+		<input type="text" style="display:inline-block" class="form-control" id="usr" placeholder="Location">
+	</div>
 		
 		<!-- Restaurant/Food category -->
 		<div style="display:inline-block">
@@ -60,10 +60,8 @@
 		</div>
 		
 		<!-- search button -->
-		<div style="display:inline-block">
-			<button type="button" class="btn-default btn-lg">Search</button>
-		</div>
-		
+	<div style="display:inline-block">
+		<button type="button" class="btn-default btn-lg">Search</button>
 	</div>
 	
 	<div class="container" id="featured-restaurants"  style="margin-left: 20%">	
