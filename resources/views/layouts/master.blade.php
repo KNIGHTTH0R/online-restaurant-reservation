@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/datepicker.css"> 
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datepicker.css')  }}"> 
 
 </head>
 
@@ -71,9 +71,9 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script> 
+    <!--<script src="js/jquery-1.9.1.min.js"></script>-->
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
     <script type="text/javascript">
         // When the document is ready
          $(document).ready(function () {

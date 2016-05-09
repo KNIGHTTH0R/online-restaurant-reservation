@@ -50,3 +50,7 @@ Route::get('login', function() {
 Route::get('signup', function() {
     return "This is going to be our signup page";
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
