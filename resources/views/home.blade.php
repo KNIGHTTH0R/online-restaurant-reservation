@@ -80,7 +80,7 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="img-responsive img-full" src="img/Restaurant-Atrium-003.jpg" alt="">
+                                <img class="img-responsive img-full" src="{{ asset('img/Restaurant-Atrium-003.jpg') }}" alt="">
                                 <div class="carousel-caption">
 									<h3>The Atrium Restaurant</h3>
 									
@@ -88,7 +88,7 @@
                             </div>
 
                             <div class="item">
-                                <img class="img-responsive img-full" src="img/Gloria_Jeans_Coffee.jpg" alt="">
+                                <img class="img-responsive img-full" src="{{ asset('img/Gloria_Jeans_Coffee.jpg') }}" alt="">
                                 <div class="carousel-caption">
 									<h3>Gloria Jeans Coffee</h3>
 									
@@ -141,7 +141,7 @@
 		        				
 			        			<td  style="align: left valign:center">
 			        				<br /> <h4 style="color: #6E0569">Comic Cafe</h4>
-			        				<a href="Comic Cafe"><img src="img/Comic-Cafe.jpg" class="img-responsive"/></a>
+			        				<a href="Comic Cafe"><img src="{{ asset('img/Comic-Cafe.jpg') }}" class="img-responsive"/></a>
 			        				
 			        			</td>
 			        		</tr>
@@ -153,7 +153,7 @@
 			        		<tr>
 			        			<td>
 			        				<br /> <h4 style="color: #6E0569">Pit Grill</h4>
-			        				<a href="Pit Grill"><img src="img/pitGrill.jpg" class="img-responsive" /></a>
+			        				<a href="Pit Grill"><img src="{{ asset('img/pitGrill.jpg') }}" class="img-responsive" /></a>
 			        			</td>
 			        			
 			        		</tr>
