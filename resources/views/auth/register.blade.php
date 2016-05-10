@@ -23,6 +23,63 @@
                                 @endif
                             </div>
                         </div>
+                        
+                        <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">First Name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
+
+                                @if ($errors->has('first_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('first_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Last Name</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+
+                                @if ($errors->has('last_name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('last_name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('contact_number') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Contact No.</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="contact_number" value="{{ old('contact_number') }}">
+
+                                @if ($errors->has('contact_number'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('contact_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('billing_address') ? ' has-error' : '' }}">
+                            <label class="col-md-4 control-label">Billing Address</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="billing_address" value="{{ old('billing_address') }}">
+
+                                @if ($errors->has('billing_address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('billing_address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">E-Mail Address</label>
