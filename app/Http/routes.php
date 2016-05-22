@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', ['restaurant_categories' => App\Restaurant_Category::all()]);
 });
 
 

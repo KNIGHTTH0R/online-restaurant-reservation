@@ -51,11 +51,9 @@
 		<!-- Restaurant/Food category -->
 		<div style="display:inline-block">
 			<select class="form-control">
-				<option value="1">Thai</option>
-				<option value="2">Chinese</option>
-				<option value="3">Bangali</option>
-				<option value="4">Italian</option>
-				<option value="5">Seafood</option>
+				@foreach($restaurant_categories as $category)
+				<option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
+				@endforeach
 			</select>	
 		</div>
 		
