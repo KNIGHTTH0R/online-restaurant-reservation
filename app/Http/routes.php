@@ -13,7 +13,14 @@
 
 Route::get('/', function () {
 	$featured = App\Restaurant::where('featured', true)->get();
-    return view('home', ['restaurant_categories' => App\Restaurant_Category::all(), 'featured_restaurants' => $featured]);
+	$reviews = App\Review::orderBy('created_at', 'desc')->take(3)->get();
+	$r_r = $reviews->map(function($item, $key) {
+		$user_name = App\User::find($item->user_id)->user_name;
+		$restaurant_name = App\Restaurant::find($item->restaurant_id)->name;
+		return ['user_name' => $user_name, 'restaurant_name' => $restaurant_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
+	});
+	
+    return view('home', ['restaurant_categories' => App\Restaurant_Category::all(), 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
 });
 
 Route::get('/restaurants', 'RestaurantController@showall');

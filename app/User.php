@@ -13,7 +13,7 @@ class User extends Authenticatable
      */
      
     //protected $table = 'user';
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
     public $timestamps = false;
     protected $fillable = [
         'user_name', 'email','first_name', 'last_name', 'contact_number', 'billing_address', 'password',
@@ -27,5 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
+    public function review()
+    {
+        return $this->hasMany('App\Review', 'user_id');  
+    }
 }

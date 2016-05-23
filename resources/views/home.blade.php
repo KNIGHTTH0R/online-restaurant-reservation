@@ -178,11 +178,11 @@
 				<div class="latest-reviews">
 					<h2>Recent Reviews</h2>
 					<ul class="list-group">
-					    <li class="list-group-item list-group-item-info"><a href="#">Anonymous</a> reviwed <a href="#">KFC</a> by 5 star </li>
-
-					    <li class="list-group-item list-group-item-info">"The Coffee was great at a reasonable price." - <a href="#">Jane Doe</a> at <a href="#">Gloria Jeans</a> </li>
-					    
-					    <li class="list-group-item list-group-item-info"> "Great environment here at KFC" - <a href="#">Jon Doe</a> </li>
+					@foreach($recent_reviews as $review)
+						<li class="list-group-item list-group-item-info">
+							{{ $review['user_name'] }} reviewed {{ $review['restaurant_name'] }} with	{{ $review['review_text'] }}					
+						</li>
+					@endforeach					
 					</ul>
 					
 				</div>        

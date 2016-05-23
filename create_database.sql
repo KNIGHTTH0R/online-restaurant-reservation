@@ -99,6 +99,7 @@ CREATE TABLE review (
 	user_id             INT,
 	review_text         VARCHAR(300),
 	rating              INT,
+	created_at 			TIMESTAMP 	DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id) ON DELETE CASCADE,
 	FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
@@ -144,3 +145,10 @@ insert into restaurant (name, location, owner_id, contact_number, img_name) valu
 insert into restaurant (name, location, owner_id, contact_number, img_name) values ("The Atrium Restaurant", "Baridhara", 4, "123456", "Restaurant-Atrium-003.jpg");
 
 insert into offered_category values((select id from restaurant_category where category_name = "Fast Food"),(select id from restaurant where name = "KFC"));
+
+insert into review (restaurant_id, user_id, review_text, rating) values
+((select id from restaurant where name = "KFC"), (select id from users where user_name = "KAI10"), "Great environment here at KFC", 5.0);
+
+insert into review (restaurant_id, user_id, review_text, rating) values
+((select id from restaurant where name = "Gloria Jeans Coffe"), (select id from users where user_name = "Tariq"), "The Coffee was great at a reasonable price.",4.0);
+
