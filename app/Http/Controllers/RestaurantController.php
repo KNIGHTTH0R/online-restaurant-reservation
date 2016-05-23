@@ -10,6 +10,13 @@ use App\Restaurant;
 class RestaurantController extends Controller
 {
     //
+    
+    public function showAll()
+    {
+    	$restaurants = Restaurant::all();
+    	return view('restaurant.showall', ['restaurants' => $restaurants]);	
+    }
+    
     public function search(Request $request)
     {
     	$name = $request->input('name');
@@ -38,7 +45,10 @@ class RestaurantController extends Controller
     	$restaurants = Restaurant::from('restaurant as r')
     	->join('offered_category as oc', 'r.id', '=', 'oc.restaurant_id')
     	->join('restaurant_category as c', 'c.id', '=', 'oc.category_id')
-    	->where('r.name', 'LIKE', $name)->where('r.location', 'LIKE', $location)->get();
+    	->where('r.name', 'LIKE', $name)
+    	->where('r.location', 'LIKE', $location)
+    	->where('c.category_name', 'LIKE', $category)
+    	->get();
     	
     	//return $restaurants;
     	return view('restaurant.search', ['restaurants' => $restaurants]);

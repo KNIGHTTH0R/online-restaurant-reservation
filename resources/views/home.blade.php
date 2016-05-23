@@ -68,7 +68,7 @@
 	</div>
 	
 	</form>
-	
+	@if(count($featured_restaurants) > 0)
 	<div class="container" id="featured-restaurants"  style="margin-left: 20%">	
 		<h1>Featured Restaurants</h1>
         <div class="row">
@@ -78,31 +78,34 @@
                         <!-- Indicators -->
                         <ol class="carousel-indicators hidden-xs">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                        	@for($i = 1; $i < count($featured_restaurants); $i++)
+                            <li data-target="#carousel-example-generic" data-slide-to="{{ $i }}"></li>
+                        	@endfor
+                        <!--
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <!--<li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
                         </ol>
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
-                            <div class="item active">
-                                <img class="img-responsive img-full" src="{{ asset('img/Restaurant-Atrium-003.jpg') }}" alt="">
+                        	@foreach($featured_restaurants as $index => $restaurant)
+                        	@if($index == 0)
+                        	<div class="item active">
+                        	@else
+                        	<div class="item">
+                        	@endif
+                                <img class="img-responsive img-full" src="{{ asset('img/'.$restaurant->img_name) }}" alt="">
                                 <div class="carousel-caption">
-									<h3>The Atrium Restaurant</h3>
+												<h3>{{ $restaurant->name }}</h3>
 									
-								</div>
+											</div>
                             </div>
-
-                            <div class="item">
-                                <img class="img-responsive img-full" src="{{ asset('img/Gloria_Jeans_Coffee.jpg') }}" alt="">
-                                <div class="carousel-caption">
-									<h3>Gloria Jeans Coffee</h3>
-									
-								</div>
-                            </div>
-
-                        </div>
+                        	@endforeach
+                        	
 
                         <!-- Controls -->
+                        
                         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                             <span class="icon-prev"></span>
                         </a>
@@ -119,6 +122,7 @@
             </div>
         </div>
 	</div>
+	@endif
 
 	<!--Recent reviews and top places-->
 	

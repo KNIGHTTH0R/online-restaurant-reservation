@@ -34,9 +34,21 @@ CREATE TABLE restaurant (
 	contact_number      VARCHAR(11)     NOT NULL,
 	rating              DOUBLE,	-- This is a derived attribute created from all the reviews of a restaurant 
 	website             VARCHAR(30),
+	img_name 			VARCHAR(100),
 	parking_available   BOOLEAN,
+	featured 			BOOLEAN DEFAULT FALSE,
 	PRIMARY KEY (id),
 	FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE food_menu (
+	id 					INT 			AUTO_INCREMENT,
+	restaurant_id 		INT,
+	name 				VARCHAR(20)		NOT NULL,
+	img_name 			VARCHAR(100),
+	price 				DOUBLE,
+	PRIMARY KEY (id),
+	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id) ON DELETE CASCADE
 );
 
 CREATE TABLE restaurant_table (
@@ -128,5 +140,7 @@ insert into users (user_name, user_type, first_name, last_name, contact_number, 
 ("Tripto001", 0, "Tripto", "Irtiza", "017", "Mymensingh", "real", "");
 
 insert into restaurant (name, location, owner_id, contact_number) values ("KFC", "Dhanmondi", 1, "123456");
+insert into restaurant (name, location, owner_id, contact_number, img_name) values ("Gloria Jeans Coffe", "Gulshan", 3, "123456", "Gloria_Jeans_Coffee.jpg");
+insert into restaurant (name, location, owner_id, contact_number, img_name) values ("The Atrium Restaurant", "Baridhara", 4, "123456", "Restaurant-Atrium-003.jpg");
 
 insert into offered_category values((select id from restaurant_category where category_name = "Fast Food"),(select id from restaurant where name = "KFC"));

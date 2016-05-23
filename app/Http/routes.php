@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('home', ['restaurant_categories' => App\Restaurant_Category::all()]);
+	$featured = App\Restaurant::where('featured', true)->get();
+    return view('home', ['restaurant_categories' => App\Restaurant_Category::all(), 'featured_restaurants' => $featured]);
 });
 
-Route::get('/restaurants', function () {
-    return App\Restaurant::all();
-});
+Route::get('/restaurants', 'RestaurantController@showall');
+
+Route::get('/restaurants/{id}', 'RestaurantController@show');
 
 Route::auth();
 
