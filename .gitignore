@@ -29,3 +29,6 @@ storage/
 # Bluefish Editor
 
 *~
+
+# Vim probably
+*.swp

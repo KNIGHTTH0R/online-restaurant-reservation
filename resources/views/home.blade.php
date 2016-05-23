@@ -5,10 +5,12 @@
 @section('content')
 	
 <!-- Number of persons -->
+<form action="{{ url('search') }}" method="POST">
+	{{ csrf_field() }}
 	
 	<div class="person-date-select"  style="padding-left: 150px; display: inline-block;">
    	<div style="display:inline-block">
-			<select class="form-control">
+			<select name="num-of-persons" class="form-control">
 				<option value="1">Reserve For 1</option>
 				<option value="2">Reserve For 2</option>
 				<option value="3">Reserve For 3</option>
@@ -21,7 +23,7 @@
     <!-- datepicker -->
 			<div class="container" style="display:inline-block; width:180px">
             <div class="hero-unit" style="width:180px">
-					<input  type="text" placeholder="choose date"  id="example1">
+					<input  type="text" name="reservation-date" placeholder="choose date"  id="example1">
 	    		</div>
 			</div>
     	</div>
@@ -29,7 +31,7 @@
 		
 		<!-- time selection -->
 	<div style="display:inline-block;">
-		<select class="form-control">
+		<select name="reservation-time" class="form-control">
 			<option value="1">07:00PM</option>
 			<option value="2">07:30PM</option>
 			<option value="3">08:00PM</option>
@@ -40,17 +42,17 @@
 		
 		<!-- Input restaurant name -->
 	<div class="form-group" style="display:inline-block">
-		<input type="text" style="display:inline-block" class="form-control" id="usr" placeholder="Restaurant Name">
+		<input type="text" name="name" style="display:inline-block" class="form-control" id="restaurant-name" placeholder="Restaurant Name">
 	</div>
 		
 		<!-- Input location -->
 	<div class="form-group" style="display:inline-block">
-		<input type="text" style="display:inline-block" class="form-control" id="usr" placeholder="Location">
+		<input type="text" name="location" style="display:inline-block" class="form-control" id="location-id" placeholder="Location">
 	</div>
 		
 		<!-- Restaurant/Food category -->
 		<div style="display:inline-block">
-			<select class="form-control">
+			<select name="categories" class="form-control">
 				@foreach($restaurant_categories as $category)
 				<option value="{{ $category->category_name }}">{{ $category->category_name }}</option>
 				@endforeach
@@ -58,9 +60,13 @@
 		</div>
 		
 		<!-- search button -->
+		
+		
 	<div style="display:inline-block">
-		<button type="button" class="btn-default btn-lg">Search</button>
+		<button type="submit" class="btn-default btn-lg">Search</button>
 	</div>
+	
+	</form>
 	
 	<div class="container" id="featured-restaurants"  style="margin-left: 20%">	
 		<h1>Featured Restaurants</h1>

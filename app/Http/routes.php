@@ -15,7 +15,12 @@ Route::get('/', function () {
     return view('home', ['restaurant_categories' => App\Restaurant_Category::all()]);
 });
 
+Route::get('/restaurants', function () {
+    return App\Restaurant::all();
+});
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::post('/search', 'RestaurantController@search');
