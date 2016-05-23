@@ -99,6 +99,9 @@ insert into restaurant_category (category_name) values ("Chinese");
 insert into restaurant_category (category_name) values ("Bangali");
 insert into restaurant_category (category_name) values ("Italian");
 insert into restaurant_category (category_name) values ("Seafood");
+insert into restaurant_category (category_name) values ("Fast Food");
+
+
 
 insert into users (user_name, user_type, first_name, last_name, contact_number, billing_address, password, remember_token) values 
 ("s.saqib", 1, "saqib", "eusuf", "2", "Jhinaidoho", "no-fate", "");
@@ -124,4 +127,6 @@ insert into users (user_name, user_type, first_name, last_name, contact_number, 
 insert into users (user_name, user_type, first_name, last_name, contact_number, billing_address, password, remember_token) values 
 ("Tripto001", 0, "Tripto", "Irtiza", "017", "Mymensingh", "real", "");
 
+insert into restaurant (name, location, owner_id, contact_number) values ("KFC", "Dhanmondi", 1, "123456");
 
+insert into offered_category values((select id from restaurant_category where category_name = "Fast Food"),(select id from restaurant where name = "KFC"));
