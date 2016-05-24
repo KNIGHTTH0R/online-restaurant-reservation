@@ -32,3 +32,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::post('/search', 'RestaurantController@search');
+
+Route::get('/account', function () {
+	return view('account');
+});

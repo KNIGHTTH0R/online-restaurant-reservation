@@ -15,6 +15,11 @@ class Restaurant extends Model
         return $this->hasMany('App\Review', 'restaurant_id');
     }
 
+    public function food_menus()
+    {
+        return $this->hasMany('App\Food_Menu', 'restaurant_id');
+    }
+
     public function categories()
     {
         return $this->belongsToMany('App\Restaurant_category', 'offered_category', 'category_id', 'restaurant_id');

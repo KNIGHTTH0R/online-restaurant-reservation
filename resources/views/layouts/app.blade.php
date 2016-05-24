@@ -23,16 +23,17 @@
 			html, body {
     			height: 100%;
 			}
-        
-        
+
+
         .wrapper {
 				min-height: 100%;
     			height: auto !important;
    		 	height: 100%;
-    			margin: 0 auto -142px        
+    			margin: 0 auto
         }
-        .footer, .push{
-				    height: 142px;  
+        
+        footer .push{
+/*				    height: 142px;*/
         }
 			body {
             font-family: 'Lato';
@@ -40,8 +41,8 @@
         .fa-btn {
             margin-right: 6px;
         }
-        
-        .footer a {
+
+        footer a {
             color: black;
         }
     </style>
@@ -94,30 +95,43 @@
             </div>
         </div>
     </nav>
-		
+
 	<div class="wrapper">
     	@yield('content')
     	<div class="push"></div>
-	</div>    
-    <div class="footer" style="background-color:white bottom:0px width:100% position:absolute">
-    	<div class="container">
-			 <div style="float:right">
+	</div>
+	
+<!--	Footer-->
+	<footer>
+	    	<div class="container">
+	    		<div class="row" style="float:right">
+					<div class="col-md-12">
 						<ul class="nav navbar-nav">
-                            <li> <a href="{{ url('/aboutus') }}"> About Us </a> </li>
-                            <li> <a href="{{ url('/termsofuse') }}"> Terms of Use </a> </li>
-                            <li> <a href="{{ url('/policy') }}"> Policy </a> </li>
-                            <li> <a href="{{ url('/faq') }}"> FAQ </a> </li>
-                            <li> <a href="{{ url('/contactus') }}">Contact Us</a> </li>
-                        </ul>	 
-			 </div>
-    	</div>
-    </div>
-    
+	                   <li> <a href="{{ url('/aboutus') }}"> About Us </a> </li>
+	                   <li> <a href="{{ url('/termsofuse') }}"> Terms of Use </a> </li>
+	                   <li> <a href="{{ url('/policy') }}"> Policy </a> </li>
+	                   <li> <a href="{{ url('/faq') }}"> FAQ </a> </li>
+	                   <li> <a href="{{ url('/contactus') }}">Contact Us</a> </li>
+	               </ul>
+					</div>
+	    		</div>
+										 <!--<div style="float:right">
+													<ul class="nav navbar-nav">
+							                            <li> <a href="{{ url('/aboutus') }}"> About Us </a> </li>
+							                            <li> <a href="{{ url('/termsofuse') }}"> Terms of Use </a> </li>
+							                            <li> <a href="{{ url('/policy') }}"> Policy </a> </li>
+							                            <li> <a href="{{ url('/faq') }}"> FAQ </a> </li>
+							                            <li> <a href="{{ url('/contactus') }}">Contact Us</a> </li>
+							                  </ul>
+										 </div>-->
+	    	</div>
+	</footer>
+
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
-    
+
     @yield('extrascripts')
 </body>
 </html>

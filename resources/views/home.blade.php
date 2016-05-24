@@ -81,14 +81,11 @@
                         	@for($i = 1; $i < count($featured_restaurants); $i++)
                             <li data-target="#carousel-example-generic" data-slide-to="{{ $i }}"></li>
                         	@endfor
-                        <!--
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>-->
                         </ol>
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
+                        
                         	@foreach($featured_restaurants as $index => $restaurant)
                         	@if($index == 0)
                         	<div class="item active">
@@ -97,9 +94,8 @@
                         	@endif
                                 <img class="img-responsive img-full" src="{{ asset('img/'.$restaurant->img_name) }}" alt="">
                                 <div class="carousel-caption">
-												<h3>{{ $restaurant->name }}</h3>
-									
-											</div>
+										<h3>{{ $restaurant->name }}</h3>	
+								</div>
                             </div>
                         	@endforeach
                         	

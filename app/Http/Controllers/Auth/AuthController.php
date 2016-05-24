@@ -29,7 +29,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
-
+    protected $username = 'user_name';
     /**
      * Create a new authentication controller instance.
      *
@@ -67,6 +67,8 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        $user_type = ($data['restaurant_owner'] == 'Y') ? 1 : 0;
+        
         return User::create([
             'user_name' => $data['user_name'],
             'first_name' => $data['first_name'],
@@ -74,6 +76,7 @@ class AuthController extends Controller
             'billing_address' => $data['billing_address'],
             'contact_number' => $data['contact_number'],
             'email' => $data['email'],
+            'user_type' => $user_type,
             'password' => bcrypt($data['password']),
         ]);
     }

@@ -15,7 +15,7 @@ CREATE TABLE users (
 	id             		INT             AUTO_INCREMENT,
 	email           	VARCHAR(20)     UNIQUE,
 	user_name           VARCHAR(20)     UNIQUE,
-	user_type           BIT(1)          NOT NULL,
+	user_type           TINYINT(1)          NOT NULL,
 	first_name          VARCHAR(50),
 	last_name           VARCHAR(50),
 	contact_number      VARCHAR(11)     NOT NULL,
@@ -36,10 +36,12 @@ CREATE TABLE restaurant (
 	website             VARCHAR(30),
 	img_name 			VARCHAR(100),
 	parking_available   BOOLEAN,
+	description 		VARCHAR(500),
 	featured 			BOOLEAN DEFAULT FALSE,
 	PRIMARY KEY (id),
 	FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
 
 CREATE TABLE food_menu (
 	id 					INT 			AUTO_INCREMENT,
@@ -47,9 +49,11 @@ CREATE TABLE food_menu (
 	name 				VARCHAR(20)		NOT NULL,
 	img_name 			VARCHAR(100),
 	price 				DOUBLE,
+	category 		VARCHAR(20),
 	PRIMARY KEY (id),
 	FOREIGN KEY (restaurant_id) REFERENCES restaurant(id) ON DELETE CASCADE
 );
+
 
 CREATE TABLE restaurant_table (
 	id 					INT,
@@ -123,7 +127,7 @@ insert into users (user_name, user_type, first_name, last_name, contact_number, 
 ("leukhhp_prrvd", 0, "ibraheem", "moosa", "1", "Chittagong", "google", "");
 
 insert into users (user_name, user_type, first_name, last_name, contact_number, billing_address, password, remember_token) values 
-("KAI10", 0, "Ashik", "Kazi", "017", "Dhaka", "pass", "");
+("KAI10", 1, "Ashik", "Kazi", "017", "Dhaka", "pass", "");
 
 insert into users (user_name, user_type, first_name, last_name, contact_number, billing_address, password, remember_token) values 
 ("adnan0944", 1, "Adnan", "Hassan", "019", "Dhaka", "guess", "");
@@ -151,4 +155,16 @@ insert into review (restaurant_id, user_id, review_text, rating) values
 
 insert into review (restaurant_id, user_id, review_text, rating) values
 ((select id from restaurant where name = "Gloria Jeans Coffe"), (select id from users where user_name = "Tariq"), "The Coffee was great at a reasonable price.",4.0);
+
+
+insert into food_menu (restaurant_id, name, img_name, price, category) values 
+((select id from restaurant where name = "The Atrium Restaurant"), "Thai Soup", "thai_soup.jpg", 200, "appetizer");
+
+insert into food_menu (restaurant_id, name, img_name, price, category) values 
+((select id from restaurant where name = "The Atrium Restaurant"), "Fried Rice", "fried_rice.jpg", 300, "main course");
+
+
+insert into review (restaurant_id, user_id, review_text, rating) values
+((select id from restaurant where name = "The Atrium Restaurant"), (select id from users where user_name = "Touhid"), "Great fried rice.",5.0);
+
 
