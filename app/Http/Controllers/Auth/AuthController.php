@@ -67,7 +67,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $user_type = ($data['restaurant_owner'] == 'Y') ? 1 : 0;
+        $user_type = (isset($data['restaurant_owner'])) ? 1 : 0;
         
         return User::create([
             'user_name' => $data['user_name'],
