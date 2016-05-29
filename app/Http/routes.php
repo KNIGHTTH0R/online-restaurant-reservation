@@ -36,3 +36,8 @@ Route::post('/search', 'RestaurantController@search');
 Route::get('/account', function () {
 	return view('account');
 });
+
+Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
+
+Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwner@storeRestaurant');
+
