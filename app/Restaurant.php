@@ -9,7 +9,7 @@ class Restaurant extends Model
     //
     protected $table = 'restaurant';
     public $timestamps = false;
-
+    protected $fillable = ['name', 'location', 'email', 'contact_number', 'website', 'parking_available', 'description'];
     public function reviews()
     {
         return $this->hasMany('App\Review', 'restaurant_id');
