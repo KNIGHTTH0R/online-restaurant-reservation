@@ -19,6 +19,16 @@ Route::get('/', function () {
 	$r_r = $reviews->map(function($item, $key) {
 		$user_name = App\User::find($item->user_id)->user_name;
 		$restaurant_name = App\Restaurant::find($item->restaurant_id)->name;
+        $r_r = $reviews->map(function($item, $key) {
+                if($item->user_id == null)
+                {
+                    $user_name = "Anonymous";
+                }
+                else
+                {
+		    $user_name = App\User::find($item->user_id)->user_name;
+                }    
+                $restaurant_name = App\Restaurant::find($item->restaurant_id)->name;
 		return ['user_name' => $user_name, 'restaurant_name' => $restaurant_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
 	});
 	
@@ -42,4 +52,3 @@ Route::get('/account', function () {
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
 
 Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwner@storeRestaurant');
-

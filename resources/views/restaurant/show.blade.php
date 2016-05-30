@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('title', $restaurant->name)
+@section('extracss')
+<link rel="stylesheet" href="{{ asset('css/scrolling-nav.css') }}">
 
+@endsection
 @section('content')
 	<!-- Intro Section -->
 	<section id="intro" class="intro-section">

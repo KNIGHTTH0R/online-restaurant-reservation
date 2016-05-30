@@ -46,6 +46,8 @@
             color: black;
         }
     </style>
+
+    @yield('extracss')
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default navbar-static-top" >
