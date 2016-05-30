@@ -69,7 +69,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/account') }}">My Account</a></li>
                     <li><a href="{{ url('/howtobook') }}">How To Book</a></li>
                     <li><a href="{{ url('/restaurants') }}">Restaurants</a></li>
                 </ul>
@@ -115,15 +115,15 @@
 	               </ul>
 					</div>
 	    		</div>
-										 <!--<div style="float:right">
-													<ul class="nav navbar-nav">
-							                            <li> <a href="{{ url('/aboutus') }}"> About Us </a> </li>
-							                            <li> <a href="{{ url('/termsofuse') }}"> Terms of Use </a> </li>
-							                            <li> <a href="{{ url('/policy') }}"> Policy </a> </li>
-							                            <li> <a href="{{ url('/faq') }}"> FAQ </a> </li>
-							                            <li> <a href="{{ url('/contactus') }}">Contact Us</a> </li>
-							                  </ul>
-										 </div>-->
+				 <!--<div style="float:right">
+							<ul class="nav navbar-nav">
+	                            <li> <a href="{{ url('/aboutus') }}"> About Us </a> </li>
+	                            <li> <a href="{{ url('/termsofuse') }}"> Terms of Use </a> </li>
+	                            <li> <a href="{{ url('/policy') }}"> Policy </a> </li>
+	                            <li> <a href="{{ url('/faq') }}"> FAQ </a> </li>
+	                            <li> <a href="{{ url('/contactus') }}">Contact Us</a> </li>
+	                  </ul>
+				 </div>-->
 	    	</div>
 	</footer>
 

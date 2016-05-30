@@ -14,6 +14,8 @@
 Route::get('/', function () {
 	$featured = App\Restaurant::where('featured', true)->get();
 	$reviews = App\Review::orderBy('created_at', 'desc')->take(3)->get();
+	//return $reviews;
+
 	$r_r = $reviews->map(function($item, $key) {
 		$user_name = App\User::find($item->user_id)->user_name;
 		$restaurant_name = App\Restaurant::find($item->restaurant_id)->name;
