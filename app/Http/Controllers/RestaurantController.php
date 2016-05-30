@@ -16,20 +16,20 @@ class RestaurantController extends Controller
     public function show($id)
     {
         $restaurant = Restaurant::find($id);
+        
         $food_menus = Food_Menu::where('restaurant_id', '=', $restaurant->id)->get();
+        
         $food_categories = Food_Menu::select('category')->where('restaurant_id', '=', $restaurant->id)->get();
+        
         $reviews = Review::where('restaurant_id', '=', $restaurant->id)->get();
         
-        $reviews = $reviews->map(function($item, $key) {
-                        if($item->user_id == null){
-                            $user_name = "Anonymous";
-                        }
-                        else{
-			    $user_name = User::find($item->user_id)->user_name;
-                        }    
-                        $restaurant_name = Restaurant::find($item->restaurant_id)->name;
-			return ['user_name' => $user_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
-		});
+        $reviews = $reviews->map(
+            function($item, $key) {
+                $user_name = ($item->user_id == null ? "Anonymous" : User::find($item->user_id)->user_name);
+                $restaurant_name = Restaurant::find($item->restaurant_id)->name;
+                return ['user_name' => $user_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
+            }
+        );
         
         return view('restaurant.show', ['restaurant' => $restaurant,'reviews' => $reviews, 'food_menus' => $food_menus, 'food_categories' => $food_categories]);
     } 
@@ -44,13 +44,9 @@ class RestaurantController extends Controller
     	$name = $request->input('name');
     	$location = $request->input('location');
     	$category = $request->input('category');
-    	
     	$reservation_date = $request->input('reservation-date');
-    	
     	$timeslot = $request->input('reservation-time');
     	$num_of_persons = $request->input('num-of-persons');
-    	
-    	$restaurants = null;
     	//$location = '%'.$location.'%';
     	//$name = '"%'.$name.'%"';
     	

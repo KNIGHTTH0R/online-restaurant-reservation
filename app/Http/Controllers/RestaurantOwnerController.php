@@ -23,7 +23,7 @@ class RestaurantOwnerController extends Controller
     
     public function storeRestaurant()
     {
-        $parking = (isset(
+        //$parking = (isset(
         $restaurant = new App\Restaurant;
         $restaurant->name = Input::get('name');
         $restaurant->location = Input::get('location');
