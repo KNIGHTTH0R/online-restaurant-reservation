@@ -29,6 +29,7 @@
 			<div class="person-date-select"  style="display: inline-block">
 			<form action="{{ url('book') }}" method="POST">
 				{{ csrf_field() }}
+			<input type="hidden" name="restaurant-id" value="{{ $restaurant->id }}">
 			<div style="padding-top: 15px; display:inline-block">
 				<select name="num-of-persons" class="form-control">
 				<!-- $$ Read from database or hardcode? -->

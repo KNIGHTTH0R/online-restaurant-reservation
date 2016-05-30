@@ -21,16 +21,16 @@ class RestaurantOwnerController extends Controller
         }
     }
     
-    public function storeRestaurant()
+    public function storeRestaurant(Request $req)
     {
         //$parking = (isset(
         $restaurant = new App\Restaurant;
-        $restaurant->name = Input::get('name');
-        $restaurant->location = Input::get('location');
-        $restaurant->email = Input::get('email');
-        $restaurant->contact_number = Input::get('contactno');
-        $restaurant->website = Input::get('website');
-        $restaurant->description = Input::get('description');
+        $restaurant->name = $req->input('name');
+        $restaurant->location = $req->input('location');
+        $restaurant->email = $req->input('email');
+        $restaurant->contact_number = $req->input('contactno');
+        $restaurant->website = $req->input('website');
+        $restaurant->description = $req->input('description');
     }
 
 }
