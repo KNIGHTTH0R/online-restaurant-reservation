@@ -195,8 +195,8 @@
 @endsection
 
 @section('extrascripts')
-<script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
+<!--<script src="js/jquery-1.9.1.min.js"></script>-->
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             

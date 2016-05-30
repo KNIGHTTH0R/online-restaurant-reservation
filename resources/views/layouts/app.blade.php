@@ -117,15 +117,6 @@
 	               </ul>
 					</div>
 	    		</div>
-										 <!--<div style="float:right">
-													<ul class="nav navbar-nav">
-							                            <li> <a href="{{ url('/aboutus') }}"> About Us </a> </li>
-							                            <li> <a href="{{ url('/termsofuse') }}"> Terms of Use </a> </li>
-							                            <li> <a href="{{ url('/policy') }}"> Policy </a> </li>
-							                            <li> <a href="{{ url('/faq') }}"> FAQ </a> </li>
-							                            <li> <a href="{{ url('/contactus') }}">Contact Us</a> </li>
-							                  </ul>
-										 </div>-->
 	    	</div>
 	</footer>
 
