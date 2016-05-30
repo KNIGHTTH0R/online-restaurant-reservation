@@ -21,8 +21,13 @@ class RestaurantController extends Controller
         $reviews = Review::where('restaurant_id', '=', $restaurant->id)->get();
         
         $reviews = $reviews->map(function($item, $key) {
-			$user_name = User::find($item->user_id)->user_name;
-			$restaurant_name = Restaurant::find($item->restaurant_id)->name;
+                        if($item->user_id == null){
+                            $user_name = "Anonymous";
+                        }
+                        else{
+			    $user_name = User::find($item->user_id)->user_name;
+                        }    
+                        $restaurant_name = Restaurant::find($item->restaurant_id)->name;
 			return ['user_name' => $user_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
 		});
         
