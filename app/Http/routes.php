@@ -31,3 +31,4 @@ Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddR
 
 Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwner@storeRestaurant');
 
+Route::post('book', 'BookingController@book');

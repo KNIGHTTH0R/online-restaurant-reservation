@@ -23,8 +23,8 @@
                 <label for="description">Describe your restaurant: </label><br>
                 <textarea name="description" id="description" cols=50 rows=10>
                 </textarea><br>
-                <input type="checkbox" name="parking" id="parking" value="parking-available"><br>
-                <input type="submit">
+                <!--<input type="checkbox" name="parking" id="parking" value="parking-available"><br>-->
+                <input type="submit" value="Add Restaurant">
             </form>
         </div>
     </div>
