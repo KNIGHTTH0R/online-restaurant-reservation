@@ -28,6 +28,7 @@ Route::get('/', function () {
 	
     return view('home', ['restaurant_categories' => App\Restaurant_Category::all(), 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
 });
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/restaurants', 'RestaurantController@showall');
