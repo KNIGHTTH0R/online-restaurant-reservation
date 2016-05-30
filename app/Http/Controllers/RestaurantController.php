@@ -47,35 +47,26 @@ class RestaurantController extends Controller
     	$reservation_date = $request->input('reservation-date');
     	$timeslot = $request->input('reservation-time');
     	$num_of_persons = $request->input('num-of-persons');
-    	//$location = '%'.$location.'%';
-    	//$name = '"%'.$name.'%"';
-    	
-    	if(strlen($location) == 0)
-    	{
-    		$location = '%';
-    	}
-    	if(strlen($name) == 0)
-    	{
-    		$name = '%';
-    	}
-    	if($category == 'none')
-    	{
-    		$category = '%';
-        }
-        //$name = '"'.$name.'"';
+        
+        $query =  Restaurant::from('restaurant as r');
 
-    	//return "%{$name}%";
-    	//$restaurants = DB:select('select * from restaurants as r join offered_category as oc on r.id = oc.restaurant_id join restaurant_category as c on c.id = oc.category_id where r.name like ? or r.location like ? or c.category_name like ?', [$name, $location, $category]);
-    	//$restaurants = Restaurant::where('name', 'like', $name)->get();
-    	$restaurants = Restaurant::from('restaurant as r')
-    	->join('offered_category as oc', 'r.id', '=', 'oc.restaurant_id')
-    	->join('restaurant_category as c', 'c.id', '=', 'oc.category_id')
-    	->where('r.name', 'LIKE', $name)
-    	->where('r.location', 'LIKE', '%')
-    	->where('c.category_name', 'LIKE', $category)
-    	->get();
+    	if(strlen($location) != 0)
+        {
+            $query = $query->where('r.location', 'LIKE', '%'.$location.'%');
+    	}
+    	if(strlen($name) != 0)
+    	{
+    	    $query = $query->where('r.name', 'LIKE', '%'.$name.'%');
+    	}
+    	if($category != 'none')
+    	{
+            $query = $query->where('c.category_name', 'LIKE', $category)
+                ->join('offered_category as oc', 'r.id', '=', 'oc.restaurant_id')
+                ->join('restaurant_category as c', 'c.id', '=', 'oc.category_id');
+        }
+
+    	$restaurants = $query->get();
     	
-    	//return $restaurants;
     	return view('restaurant.search', ['restaurants' => $restaurants]);
     }
 }
