@@ -117,6 +117,7 @@
 	               </ul>
 					</div>
 	    		</div>
+<<<<<<< HEAD
 				 <!--<div style="float:right">
 							<ul class="nav navbar-nav">
 	                            <li> <a href="{{ url('/aboutus') }}"> About Us </a> </li>
@@ -126,6 +127,8 @@
 	                            <li> <a href="{{ url('/contactus') }}">Contact Us</a> </li>
 	                  </ul>
 				 </div>-->
+=======
+>>>>>>> a91cedb5efc1c284adf11aec7f110d3811b330ce
 	    	</div>
 	</footer>
 

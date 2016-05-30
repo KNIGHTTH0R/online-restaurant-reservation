@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', function () {
 	$featured = App\Restaurant::where('featured', true)->get();
 	$reviews = App\Review::orderBy('created_at', 'desc')->take(3)->get();
@@ -29,6 +28,7 @@ Route::get('/', function () {
 	
     return view('home', ['restaurant_categories' => App\Restaurant_Category::all(), 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
 });
+Route::get('/', 'HomeController@index');
 
 Route::get('/restaurants', 'RestaurantController@showall');
 
