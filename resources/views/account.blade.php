@@ -51,11 +51,7 @@
 	</table>
 
 	<p>
-	
-		<form action="{{ url('/').'/account/'.Auth::user()->id.'/update' }}" method="POST">
-			<input type="submit" value="Update">
-		</form>
-
+		<a href="{{ url('/').'/account/update' }}"> <h4>Update</h4> </a>
 	</p>
 </div>
 
