@@ -47,7 +47,7 @@ class RestaurantController extends Controller
     	
     	$restaurants = null;
     	//$location = '%'.$location.'%';
-    	$name = '%'.$name.'%';
+    	//$name = '"%'.$name.'%"';
     	
     	if(strlen($location) == 0)
     	{
@@ -60,17 +60,19 @@ class RestaurantController extends Controller
     	if($category == 'none')
     	{
     		$category = '%';
-    	}
+        }
+        //$name = '"'.$name.'"';
+
     	//return "%{$name}%";
     	//$restaurants = DB:select('select * from restaurants as r join offered_category as oc on r.id = oc.restaurant_id join restaurant_category as c on c.id = oc.category_id where r.name like ? or r.location like ? or c.category_name like ?', [$name, $location, $category]);
-    	$restaurants = Restaurant::where('name', 'like', $name)->get();
-    	//$restaurants = Restaurant::from('restaurant as r')
-    	//->join('offered_category as oc', 'r.id', '=', 'oc.restaurant_id')
-    	//->join('restaurant_category as c', 'c.id', '=', 'oc.category_id')
-    	//->where('r.name', 'LIKE', $name)
-    	//->where('r.location', 'LIKE', $location)
-    	//->where('c.category_name', 'LIKE', $category)
-    	//->get();
+    	//$restaurants = Restaurant::where('name', 'like', $name)->get();
+    	$restaurants = Restaurant::from('restaurant as r')
+    	->join('offered_category as oc', 'r.id', '=', 'oc.restaurant_id')
+    	->join('restaurant_category as c', 'c.id', '=', 'oc.category_id')
+    	->where('r.name', 'LIKE', $name)
+    	->where('r.location', 'LIKE', '%')
+    	->where('c.category_name', 'LIKE', $category)
+    	->get();
     	
     	//return $restaurants;
     	return view('restaurant.search', ['restaurants' => $restaurants]);
