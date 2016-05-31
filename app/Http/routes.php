@@ -10,9 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use Illuminate\Http\Request;
+use App\Http\Requests;
 
 use Illuminate\Support\Facades\Input;
 use App\Restaurant;
+use App\RestaurantTable;
 
 Route::get('/', 'HomeController@index');
 
@@ -39,19 +42,20 @@ Route::get('/account', function () {
 
 Route::get('restaurant_info_update/{id}', function(Request $req, $id) {
     $rest = Restaurant::find($id);
-    return view('restaurant_info_update', ['restaurants', $rest]);
+    $tables = RestaurantTable::where('restaurant_id', '=', $id)->get();
+    return view('restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
 });
 
-Route::put('restaurant_info_update/{id}', function($id)
+Route::put('restaurant_info_update/{id}', function(Request $req, $id)
 {
     $rest = Restaurant::find($id);
     $rest->location = $req->input('location');
     $rest->email = $req->input('email');
-    $rest->contact = $req->input('contact');
+    $rest->contact_number = $req->input('contact');
     $rest->website = $req->input('website');
     $rest->description = $req->input('desc');
     $rest->save();
-
+    return redirect('/account');
 });
 Route::get('/account/update', function(){
     return view('account_update');

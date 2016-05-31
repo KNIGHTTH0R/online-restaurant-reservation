@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-	<form action="{{ url('/').'/restaurant_info_update'.$restaurant->id }}" method="POST">
+	<form action="{{ url('/').'/restaurant_info_update/'.$restaurants->id }}" method="POST">
 
 		<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 		<input type="hidden" name="_method" value="PUT">
@@ -81,8 +81,8 @@
 
 			<tbody>
 				<!-- Restaurant id has to be passed from controller/prev page -->
-				@foreach ($restaurant_tables as table)
-					@if ($table->restaurant_id == restaurant_id)
+				@foreach ($restaurant_tables as $table)
+					@if ($table->restaurant_id == $restaurants->restaurant_id)
 					<tr>
 						<td>
 							<input type="text" id= "{{ 'capacity_'.$table->id }}" name="{{ 'capacity_'.$table->id }}" value="{{ $table->capacity }}">

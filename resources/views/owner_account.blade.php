@@ -79,7 +79,7 @@
 						{{ $restaurant->location }}
 					</td>
 					<td>
-						<a href="{{ url('/').'/restaurant_info_update'.$restaurant->id }}"> <h4>Update</h4> </a>
+						<a href="{{ url('/').'/restaurant_info_update/'.$restaurant->id }}"> <h4>Update</h4> </a>
 					</td>
 				</tr>
 				@endif
