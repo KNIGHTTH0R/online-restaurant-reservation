@@ -59,7 +59,7 @@
 				<tr>
 					<td> <strong>Description:</strong></td>
 					<td>
-					    <input type="text" id="desc" name="desc" value="{{ $restaurants->d }}"/>
+					    <input type="text" id="desc" name="desc" value="{{ $restaurants->description }}"/>
 					</td>
 				</tr>
 
@@ -85,11 +85,11 @@
 					@if ($table->restaurant_id == restaurant_id)
 					<tr>
 						<td>
-							<input type="text" id="capacity" name="capacity" value="{{ $table->capacity }}">
+							<input type="text" id= "{{ 'capacity_'.$table->id }}" name="{{ 'capacity_'.$table->id }}" value="{{ $table->capacity }}">
 						</td>
 					
 						<td>
-							<input type="text" id="booking_fee" name="booking_fee" value="{{ $table->booking_fee }}">
+							<input type="text" id="{{ 'booking_fee_'.$table->id }}" name="{{ 'booking_fee_'.$table->id }}" value="{{ $table->booking_fee }}">
 						</td>
 					</tr>
 					@endif
