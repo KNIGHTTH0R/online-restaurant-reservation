@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-	<form action="{{ url('/').'/account' }}" method="POST">
+	<form action="{{ url('/').'/restaurant_info_update'.$restaurant->id }}" method="POST">
 
 		<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 		<input type="hidden" name="_method" value="PUT">
