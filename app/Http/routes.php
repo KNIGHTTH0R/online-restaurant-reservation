@@ -13,25 +13,6 @@
 
 use Illuminate\Support\Facades\Input;
 
-Route::get('/', function () {
-	$featured = App\Restaurant::where('featured', true)->get();
-	$reviews = App\Review::orderBy('created_at', 'desc')->take(3)->get();
-    $r_r = $reviews->map(function($item, $key) {
-        if($item->user_id == null)
-        {
-            $user_name = "Anonymous";
-        }
-        else
-        {
-    		$user_name = App\User::find($item->user_id)->user_name;
-        }    
-        $restaurant_name = App\Restaurant::find($item->restaurant_id)->name;
-		return ['user_name' => $user_name, 'restaurant_name' => $restaurant_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
-	});
-	
-    return view('home', ['restaurant_categories' => App\Restaurant_Category::all(), 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
-});
-
 Route::get('/', 'HomeController@index');
 
 Route::get('/restaurants', 'RestaurantController@showall');
@@ -45,9 +26,26 @@ Route::get('/home', 'HomeController@index');
 Route::post('/search', 'RestaurantController@search');
 
 Route::get('/account', function () {
-	return view('account');
+	if(Auth::user()->user_type == 1)
+	{
+	    return view('owner_account');
+	}
+	else
+	{
+	    return view('account');
+	}
 });
 
+Route::get('restaurant_info_update/{id}', function(Request $req, $id) {
+    $rest = Restaurant::find($id);
+    $rest->
+    return view('restaurant_info_update', ['restaurants', $rest]);
+});
+
+Route::put('restaurant_info_update/{id}', function($id)
+{
+    
+});
 Route::get('/account/update', function(){
     return view('account_update');
 });
