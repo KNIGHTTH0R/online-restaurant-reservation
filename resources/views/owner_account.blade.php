@@ -64,7 +64,7 @@
 			<!-- $$Read from database and use laravel for integration-->
 			<tbody>
 				@foreach($restaurants as $restaurant)
-				@if ($restaurant->owner_id == Auth::user()->user_id)
+				@if ($restaurant->owner_id == Auth::user()->id)
 				<tr>
 					<td style="padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em">
 						<!--Image from database $$-->
