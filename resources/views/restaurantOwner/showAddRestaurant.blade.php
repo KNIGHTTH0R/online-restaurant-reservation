@@ -7,7 +7,7 @@
 <div class="container" id="add-restaurant-form">
     <div class="row">
         <div class="col-md-12">
-            <form style="text-align:center" action="{{ url('storeRestaurant') }}" method="POST">
+            <form style="text-align:center" action="{{ url('/restaurantOwner/storeRestaurant') }}" method="POST">
                 {{ csrf_field() }}
                 
                 <label for="name">Restaurant Name: </label>
@@ -19,7 +19,7 @@
                 <label for="contactno">Contact No.: </label>
                 <input type="text"  name="contactno" id="contactno"><br>
                 <label for="website">Website: </label>
-                <input type="url" name="website" id="website"><br>
+                <input type="text" name="website" id="website"><br>
                 <label for="description">Describe your restaurant: </label><br>
                 <textarea name="description" id="description" cols=50 rows=10>
                 </textarea><br>

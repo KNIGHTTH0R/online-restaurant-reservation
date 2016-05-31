@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Restaurant;
+use Auth;
 
 class RestaurantOwnerController extends Controller
 {
@@ -24,13 +26,16 @@ class RestaurantOwnerController extends Controller
     public function storeRestaurant(Request $req)
     {
         //$parking = (isset(
-        $restaurant = new App\Restaurant;
+        $restaurant = new Restaurant();
         $restaurant->name = $req->input('name');
         $restaurant->location = $req->input('location');
         $restaurant->email = $req->input('email');
         $restaurant->contact_number = $req->input('contactno');
         $restaurant->website = $req->input('website');
-        $restaurant->description = $req->input('description');
+	$restaurant->description = $req->input('description');
+	$restaurant->owner_id = Auth::user()->id;
+	$restaurant->save();
+	return redirect('/account');
     }
 
 }

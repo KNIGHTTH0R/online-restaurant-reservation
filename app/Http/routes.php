@@ -69,7 +69,22 @@ Route::put('/account', function(){
 });
 
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
+Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwnerController@storeRestaurant');
 
-Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwner@storeRestaurant');
 
+/*
+Route::post('/restaurantOwner/storeRestaurant', function (Request $req)
+    {
+        //$parking = (isset(
+        $restaurant = new App\Restaurant;
+        $restaurant->name = $req->input('name');
+        $restaurant->location = $req->input('location');
+        $restaurant->email = $req->input('email');
+        $restaurant->contact_number = $req->input('contactno');
+        $restaurant->website = $req->input('website');
+	$restaurant->description = $req->input('description');
+	return redirect('/account');
+    }
+);
+ */
 Route::post('book', 'BookingController@book');
