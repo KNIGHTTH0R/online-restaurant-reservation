@@ -53,6 +53,7 @@
 	<p>
 		<a href="{{ url('/').'/account/update' }}"> <h4>Update</h4> </a>
 	</p>
+
 </div>
 
 @endsection
