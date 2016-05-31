@@ -12,6 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Input;
+use App\Restaurant;
 
 Route::get('/', 'HomeController@index');
 
@@ -28,7 +29,7 @@ Route::post('/search', 'RestaurantController@search');
 Route::get('/account', function () {
 	if(Auth::user()->user_type == 1)
 	{
-	    return view('owner_account');
+	    return view('owner_account', ['restaurants' => Restaurant::all()]);
 	}
 	else
 	{
@@ -38,13 +39,19 @@ Route::get('/account', function () {
 
 Route::get('restaurant_info_update/{id}', function(Request $req, $id) {
     $rest = Restaurant::find($id);
-    $rest->
     return view('restaurant_info_update', ['restaurants', $rest]);
 });
 
 Route::put('restaurant_info_update/{id}', function($id)
 {
-    
+    $rest = Restaurant::find($id);
+    $rest->location = $req->input('location');
+    $rest->email = $req->input('email');
+    $rest->contact = $req->input('contact');
+    $rest->website = $req->input('website');
+    $rest->description = $req->input('desc');
+    $rest->save();
+
 });
 Route::get('/account/update', function(){
     return view('account_update');
