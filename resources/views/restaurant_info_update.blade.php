@@ -59,7 +59,7 @@
 				<tr>
 					<td> <strong>Description:</strong></td>
 					<td>
-					    <input type="text" id="desc" name="desc" value="{{ $restaurants->d }}"/>
+					    <input type="text" id="desc" name="desc" value="{{ $restaurants->description }}"/>
 					</td>
 				</tr>
 
