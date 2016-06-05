@@ -6,27 +6,79 @@
 
 <div class="container" id="add-restaurant-form">
     <div class="row">
-        <div class="col-md-12">
-            <form style="text-align:center" action="{{ url('/restaurantOwner/storeRestaurant') }}" method="POST">
-                {{ csrf_field() }}
-                
-                <label for="name">Restaurant Name: </label>
-                <input type="text" name="name" id="name"><br>
-                <label for="location">Location: </label>
-                <input type="text" name="location" id="location"><br>
-                <label for="email">Email: </label>
-                <input type="email" name="email" id="email"><br>
-                <label for="contactno">Contact No.: </label>
-                <input type="text"  name="contactno" id="contactno"><br>
-                <label for="website">Website: </label>
-                <input type="text" name="website" id="website"><br>
-                <label for="description">Describe your restaurant: </label><br>
-                <textarea name="description" id="description" cols=50 rows=10>
-                </textarea><br>
-                <!--<input type="checkbox" name="parking" id="parking" value="parking-available"><br>-->
-                <input type="submit" value="Add Restaurant">
-            </form>
-        </div>
+	<div class="col-md-12">
+
+	    	<form action="{{ url('/restaurantOwner/storeRestaurant') }}" method="POST">
+
+		<input type="hidden" name="_token" value = "{{ csrf_token() }}">
+		
+		<table>
+			<col width="120">
+	  		<col width="120">
+
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td><strong>Name:</strong></td>
+					<td>
+						<input type="text" name="name">
+					</td>
+				</tr>
+				
+				<tr>
+					<td><strong>Location:</strong></td>
+					<td>
+						<input type="text" name="location">
+					</td>
+				</tr>
+
+				<tr>
+					<td> <strong>Email:</strong></td>
+					<td>
+						<input type="text" name="email">
+					</td>
+				</tr>
+
+				<tr>
+					<td> <strong>Contact NO:</strong></td>
+					<td>
+						<input type="text" name="contactno"/>
+					</td>
+				</tr>
+
+				<tr>
+					<td> <strong>Website:</strong></td>
+					<td>
+					    <input type="text" name="website"/>
+					</td>
+				</tr>
+				<!-- how to do this?
+				<tr>
+					<td> <strong>Image:</strong></td>
+					<td>
+					    <input type="text" id="image" name="image"/>
+					</td>
+				</tr>
+				-->
+				<tr>
+					<td> <strong>Description:</strong></td>
+					<td>
+					    <input type="text" name="description"/>
+					</td>
+				</tr>
+   			</tbody>
+
+		</table>
+
+		<input type="submit" value="Update">
+	    </form>
+	</div>
     </div>
 </div>
 
