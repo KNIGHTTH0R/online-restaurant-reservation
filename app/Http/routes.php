@@ -19,48 +19,30 @@ use App\RestaurantTable;
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/home', 'HomeController@index');
+
+
+Route::post('/search', 'RestaurantController@search');
+
 Route::get('/restaurants', 'RestaurantController@showall');
 
 Route::get('/restaurants/{id}', 'RestaurantController@show');
 
+
 Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
-Route::post('/search', 'RestaurantController@search');
 
 Route::get('/account', function () {
 	if(Auth::user()->user_type == 1)
 	{
-	    return view('owner_account', ['restaurants' => Restaurant::all()]);
+	    return view('restaurantOwner.owner_account', ['restaurants' => Restaurant::all()]);
 	}
 	else
 	{
 	    return view('account');
 	}
 });
-Route::get('restaurant_info_update/{id}', 'RestaurantOwnerController@showUpdateRestaurant');
-/*
-Route::get('restaurant_info_update/{id}', function(Request $req, $id) {
-    $rest = Restaurant::find($id);
-    $tables = RestaurantTable::where('restaurant_id', '=', $id)->get();
-    return view('restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
-});
- */
-Route::put('restaurant_info_update/{id}', 'RestaurantOwnerController@updateRestaurant');
-/*
-Route::put('restaurant_info_update/{id}', function(Request $req, $id)
-{
-    $rest = Restaurant::find($id);
-    $rest->location = $req->input('location');
-    $rest->email = $req->input('email');
-    $rest->contact_number = $req->input('contact');
-    $rest->website = $req->input('website');
-    $rest->description = $req->input('desc');
-    $rest->save();
-    return redirect('/account');
-});
- */
+
+
 Route::get('/account/update', function(){
     return view('account_update');
 });
@@ -78,21 +60,9 @@ Route::put('/account', function(){
 
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
 Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwnerController@storeRestaurant');
+Route::get('restaurant_info_update/{id}', 'RestaurantOwnerController@showUpdateRestaurant');
+
+Route::put('restaurant_info_update/{id}', 'RestaurantOwnerController@updateRestaurant');
 
 
-/*
-Route::post('/restaurantOwner/storeRestaurant', function (Request $req)
-    {
-        //$parking = (isset(
-        $restaurant = new App\Restaurant;
-        $restaurant->name = $req->input('name');
-        $restaurant->location = $req->input('location');
-        $restaurant->email = $req->input('email');
-        $restaurant->contact_number = $req->input('contactno');
-        $restaurant->website = $req->input('website');
-	$restaurant->description = $req->input('description');
-	return redirect('/account');
-    }
-);
- */
 Route::post('book', 'BookingController@book');

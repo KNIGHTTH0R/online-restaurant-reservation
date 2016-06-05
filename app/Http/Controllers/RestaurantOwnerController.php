@@ -27,7 +27,7 @@ class RestaurantOwnerController extends Controller
     {
 	$rest = Restaurant::find($id);
 	$tables = RestaurantTable::where('restaurant_id', '=', $id)->get();
-	return view('restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
+	return view('restaurantOwner.restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
     }
     public function updateRestaurant(Request $req, $id)
     {
