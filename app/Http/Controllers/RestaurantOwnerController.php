@@ -38,7 +38,7 @@ class RestaurantOwnerController extends Controller
 	$rest->website = $req->input('website');
 	$rest->description = $req->input('desc');
 	$rest->save();
-	return redirect('/account');
+	return redirect('restaurant_info_update/'.$id);
     }
     public function storeRestaurant(Request $req)
     {
@@ -54,5 +54,20 @@ class RestaurantOwnerController extends Controller
 	$restaurant->save();
 	return redirect('/account');
     }
-
+    public function addRestaurantTable(Request $req, $id)
+    {
+	$rest = Restaurant::find($id);
+	$quantity = $req->input('new_num_of_tables');
+	$capacity = $req->input('new_capacity');
+	$booking_fee = $req->input('new_booking_fee');
+	for($i = 0; $i < $quantity; $i++)
+	{
+	    $table = new RestaurantTable();
+	    $table->restaurant_id = $id;
+	    $table->capacity = $capacity;
+	    $table->booking_fee = $booking_fee;
+	    $table->save();
+	}
+	return redirect('restaurant_info_update/'.$id);
+    }
 }
