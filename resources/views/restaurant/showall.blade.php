@@ -4,7 +4,7 @@
 
 <!-- Intro Section -->
 	
-	<div style="height: 300px; overflow-y:scroll; margin-left:20px; margin-right: 40px; padding-left:70px; padding-right:20px">
+	<div style="overflow-y:scroll; margin-left:20px; margin-right: 40px; padding-left:70px; padding-right:20px">
 		<table style="margin-top: 25px; border:none">
 			<!-- $$Read from database and use laravel for integration-->
 			<tbody>
