@@ -69,10 +69,13 @@
 					    <input type="text" id="desc" name="desc" value="{{ $restaurants->description }}"/>
 					</td>
 				</tr>
-
-			</tbody>
+   			</tbody>
 
 		</table>
+
+		<input type="submit" value="Update">
+	</form>
+	
 		<p> <br> <br> </p>
 		<h4> Update Existing Tables </h4>
 		<table>
@@ -89,25 +92,31 @@
 			<tbody>
 				<!-- Restaurant id has to be passed from controller/prev page -->
 				@foreach ($restaurant_tables as $table)
+			    	<form action="{{ url('/').'/restaurant_info_update/update_table/'.$table->id }}" method="POST">
+					<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 					<tr>
 						<td>
-							<input type="text" id= "{{ 'capacity_'.$table->id }}" name="{{ 'capacity_'.$table->id }}" value="{{ $table->capacity }}">
+							<input type="text" name="capacity" value="{{ $table->capacity }}">
 						</td>
 					
 						<td>
-							<input type="text" id="{{ 'booking_fee_'.$table->id }}" name="{{ 'booking_fee_'.$table->id }}" value="{{ $table->booking_fee }}">
+							<input type="text" name="booking_fee" value="{{ $table->booking_fee }}">
+						</td>
+						<td>
+							<input type="submit" value="Update">
 						</td>
 					</tr>
+				</form>
 				@endforeach
 			</tbody>
 
 		</table>
-
+<!--
 		<p></p>
 		<p>
-			<input type="submit" value="Update">
+			<input type="submit" value="Update Tables">
 		</p>
-	</form>
+-->
 	
 	<form action="{{ url('/').'/restaurant_info_update/add_table/'.$restaurants->id }}" method="POST">
 	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">

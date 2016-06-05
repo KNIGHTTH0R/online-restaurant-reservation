@@ -26,7 +26,7 @@ class RestaurantOwnerController extends Controller
     public function showUpdateRestaurant($id)
     {
 	$rest = Restaurant::find($id);
-	$tables = RestaurantTable::where('restaurant_id', '=', $id)->get();
+	$tables = RestaurantTable::where('restaurant_id', '=', $id)->orderBy('capacity', 'asc')->orderBy('booking_fee', 'asc')->get();
 	return view('restaurantOwner.restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
     }
     public function updateRestaurant(Request $req, $id)
@@ -42,7 +42,6 @@ class RestaurantOwnerController extends Controller
     }
     public function storeRestaurant(Request $req)
     {
-        //$parking = (isset(
         $restaurant = new Restaurant();
         $restaurant->name = $req->input('name');
         $restaurant->location = $req->input('location');
@@ -69,5 +68,13 @@ class RestaurantOwnerController extends Controller
 	    $table->save();
 	}
 	return redirect('restaurant_info_update/'.$id);
+    }
+    public function updateRestaurantTable(Request $req, $table_id)
+    {
+	$table = RestaurantTable::find($table_id);
+	$table->capacity = $req->input('capacity');
+	$table->booking_fee = $req->input('booking_fee');
+	$table->save();
+	return redirect()->back();
     }
 }

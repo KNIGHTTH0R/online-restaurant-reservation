@@ -67,4 +67,6 @@ Route::put('restaurant_info_update/{id}', 'RestaurantOwnerController@updateResta
 
 Route::post('/restaurant_info_update/add_table/{id}', 'RestaurantOwnerController@addRestaurantTable');
 
+Route::post('/restaurant_info_update/update_table/{table_id}', 'RestaurantOwnerController@updateRestaurantTable');
+
 Route::post('book', 'BookingController@book');
