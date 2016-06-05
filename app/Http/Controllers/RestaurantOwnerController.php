@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Restaurant;
+use App\RestaurantTable;
 use Auth;
 
 class RestaurantOwnerController extends Controller
@@ -22,7 +23,23 @@ class RestaurantOwnerController extends Controller
             return redirect('/login');
         }
     }
-    
+    public function showUpdateRestaurant($id)
+    {
+	$rest = Restaurant::find($id);
+	$tables = RestaurantTable::where('restaurant_id', '=', $id)->get();
+	return view('restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
+    }
+    public function updateRestaurant(Request $req, $id)
+    {
+	$rest = Restaurant::find($id);
+	$rest->location = $req->input('location');
+	$rest->email = $req->input('email');
+	$rest->contact_number = $req->input('contact');
+	$rest->website = $req->input('website');
+	$rest->description = $req->input('desc');
+	$rest->save();
+	return redirect('/account');
+    }
     public function storeRestaurant(Request $req)
     {
         //$parking = (isset(

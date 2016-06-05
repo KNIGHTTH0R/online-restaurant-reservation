@@ -23,6 +23,13 @@
 
 			<tbody>
 				<tr>
+					<td><strong>Name:</strong></td>
+					<td>
+						<p>{{ $restaurants->name  }}</p>
+					</td>
+				</tr>
+				
+				<tr>
 					<td><strong>Location:</strong></td>
 					<td>
 						<input type="text" id="location" name="location" value="{{ $restaurants->location }}">

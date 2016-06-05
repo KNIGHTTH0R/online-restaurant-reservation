@@ -39,13 +39,16 @@ Route::get('/account', function () {
 	    return view('account');
 	}
 });
-
+Route::get('restaurant_info_update/{id}', 'RestaurantOwnerController@showUpdateRestaurant');
+/*
 Route::get('restaurant_info_update/{id}', function(Request $req, $id) {
     $rest = Restaurant::find($id);
     $tables = RestaurantTable::where('restaurant_id', '=', $id)->get();
     return view('restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
 });
-
+ */
+Route::put('restaurant_info_update/{id}', 'RestaurantOwnerController@updateRestaurant');
+/*
 Route::put('restaurant_info_update/{id}', function(Request $req, $id)
 {
     $rest = Restaurant::find($id);
@@ -57,6 +60,7 @@ Route::put('restaurant_info_update/{id}', function(Request $req, $id)
     $rest->save();
     return redirect('/account');
 });
+ */
 Route::get('/account/update', function(){
     return view('account_update');
 });
