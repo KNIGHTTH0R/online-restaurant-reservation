@@ -5,7 +5,8 @@
 @section('content')
 
 <div class="container">
-	<table>
+
+	<table class="table table-hover">
 		<col width="120">
   		<col width="120">
 
@@ -53,6 +54,47 @@
 	<p>
 		<a href="{{ url('/').'/account/update' }}"> <h4>Update</h4> </a>
 	</p>
+
+	@if(Auth::user()->user_type == 1)
+		<p> <br> </p>
+		<p>
+			<a href="{{ url('/').'/restaurantOwner/addRestaurant' }}"> <h4>Add a Restaurant</h4> </a>
+		</p>
+			
+		<h4> List of my Restaurants </h4>
+
+		<table class="table table-hover">
+			<!-- $$Read from database and use laravel for integration-->
+			<tbody>
+				@foreach($restaurants as $restaurant)
+				@if ($restaurant->owner_id == Auth::user()->id)
+				<tr>
+					<td style="padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em">
+						<!--Image from database $$-->
+						<img src="{{ asset('img/'.$restaurant->img_name) }}" height="50px"/>
+					</td>
+
+					<td style="padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em">
+						<!--Name from database $$-->
+						<a href="{{ url('restaurants/'.$restaurant->id) }}"> {{ $restaurant->name }} </a> <br>
+						<!--Rating from database $$-->
+						{{ $restaurant->rating }} <br>
+						<!--Location from database $$-->
+						{{ $restaurant->location }}
+					</td>
+
+					<td>
+						<a href="{{ url('/').'/restaurant_info_update/'.$restaurant->id }}"> <h4>Update</h4> </a>
+					</td>
+
+				</tr>
+				@endif
+				@endforeach
+				
+			</tbody>
+		</table>
+	
+	@endif
 
 </div>
 

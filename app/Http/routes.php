@@ -34,7 +34,8 @@ Route::auth();
 Route::get('/account', function () {
 	if(Auth::user()->user_type == 1)
 	{
-	    return view('restaurantOwner.owner_account', ['restaurants' => Restaurant::all()]);
+	    //return view('restaurantOwner.owner_account', ['restaurants' => Restaurant::all()]);
+	    return view('account', ['restaurants' => Restaurant::all()]);
 	}
 	else
 	{
