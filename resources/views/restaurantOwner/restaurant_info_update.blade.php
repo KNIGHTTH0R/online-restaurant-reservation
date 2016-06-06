@@ -179,23 +179,23 @@
 			<tbody>
 				<!-- Restaurant id has to be passed from controller/prev page -->
 				@foreach ($food_menus as $menu)
-			    	<form action="{{ url('/').'/restaurant_info_update/update_food_menu/'.$menu->id }}" enctype="multipart/form-data" method="POST">
+			    	<form action="{{ url('/').'/restaurant_info_update/update_food_menu/'.$menu->id }}" enctype="multipart/form-data" method="POST" role="form">
 					<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 					<tr>
 					<td>
-						<input type="text" name="menu_name" value="{{ $menu->name  }}">
+						<input type="text" name="menu_name" value="{{ $menu->name  }}" class="form-control">
 					</td>
 				
 					<td>
-						<input type="text" name="menu_price" value="{{ $menu->price }}">
+						<input type="text" name="menu_price" value="{{ $menu->price }}" class="form-control">
 					</td>
 
 					<td>
-						<input type="text" value={{ $menu->category }} class="field left" readonly>
+						<input type="text" value="{{ $menu->category }}" class="form-control" readonly>
 					</td>
 
 					<td>
-						<input type="file" name="menu_image"/>
+						<input type="file" name="menu_image">
 					</td>
 					<td>
 					  <input type="submit" value="Update Food Menu">
@@ -207,7 +207,7 @@
 
 		</table>
 
-	<form action="{{ url('/').'/restaurant_info_update/add_food_menu/'.$restaurants->id }}" enctype="multipart/form-data" method="POST">
+	<form action="{{ url('/').'/restaurant_info_update/add_food_menu/'.$restaurants->id }}" enctype="multipart/form-data" method="POST" role="form">
 	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">
 	    
 	    <p><br><br></p>
@@ -229,11 +229,11 @@
 			<tbody>
 				<tr>
 					<td>
-						<input type="text"  name="new_menu_name">
+						<input type="text"  name="new_menu_name" class="form-control">
 					</td>
 				
 					<td>
-						<input type="text"  name="new_menu_price">
+						<input type="text"  name="new_menu_price" class="form-control">
 					</td>
 					
 					<td>
@@ -246,7 +246,7 @@
 					</td>
 
 					<td>
-						<input type="file" name="new_menu_image"/>
+						<input type="file" name="new_menu_image">
 
 					</td>
 				</tr>
