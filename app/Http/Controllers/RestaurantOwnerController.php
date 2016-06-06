@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Restaurant;
 use App\RestaurantTable;
+use App\Food_Menu;
 use Auth;
 
 class RestaurantOwnerController extends Controller
@@ -27,7 +28,8 @@ class RestaurantOwnerController extends Controller
     {
 	$rest = Restaurant::find($id);
 	$tables = RestaurantTable::where('restaurant_id', '=', $id)->orderBy('capacity', 'asc')->orderBy('booking_fee', 'asc')->get();
-	return view('restaurantOwner.restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables]);
+	$food_menus = Food_Menu::where('restaurant_id', '=', $id)->get();
+	return view('restaurantOwner.restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables, 'food_menus' => $food_menus]);
     }
     public function updateRestaurant(Request $req, $id)
     {
@@ -57,6 +59,31 @@ class RestaurantOwnerController extends Controller
 	}
 	$restaurant->save();
 	return redirect('/account');
+    }
+    public function updateFoodMenu(Request $req, $menu_id)
+    {
+	$food_menu = Food_Menu::find($menu_id);
+	$food_menu->name = $req->menu_name;
+	$food_menu->price = $req->menu_price;
+	$food_menu->category = $req->menu_category;
+	$food_menu->save();
+	return redirect()->back();
+    }
+    public function addFoodMenu(Request $req, $id)
+    {
+	//$rest = Restaurant::find($id);
+	$food_menu = new Food_Menu();
+	$food_menu->restaurant_id = $id;
+	$food_menu->name = $req->new_menu_name;
+	$food_menu->price = $req->new_menu_price;
+	$food_menu->category = $req->new_menu_category;
+	if($req->hasFile('new_menu_image') && $req->file('new_menu_image')->isValid()){
+	    $image_file = $req->file('new_menu_image');
+	    $req->file('new_menu_image')->move('img/', $restaurant->name.$req->file('new_menu_image')->getClientOriginalName());
+	    $food_menu->img_name = $restaurant->name.$req->file('new_menu_image')->getClientOriginalName(); 
+	}
+	$food_menu->save();
+	return redirect()->back();
     }
     public function addRestaurantTable(Request $req, $id)
     {

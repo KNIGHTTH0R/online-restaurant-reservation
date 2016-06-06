@@ -154,6 +154,103 @@
 		<input type="submit" value="Add Table">
 	    
 	</form>
+	    
+	    <h4> Update Food Menu </h4>
+		<table>
+			<col width="120">
+	  		<col width="120">
+
+			<thead>
+				<tr>
+				        <th> Menu Name </th>
+					<th> Price </th>
+					<th> Category </th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<!-- Restaurant id has to be passed from controller/prev page -->
+				@foreach ($food_menus as $menu)
+			    	<form action="{{ url('/').'/restaurant_info_update/update_food_menu/'.$menu->id }}" method="POST">
+					<input type="hidden" name="_token" value = "{{ csrf_token() }}">
+					<tr>
+					<td>
+						<input type="text" name="menu_name" value="{{ $menu->name  }}">
+					</td>
+				
+					<td>
+						<input type="text" name="menu_price" value="{{ $menu->price }}">
+					</td>
+					
+					<td>
+					    <select name="menu_category" class="form-control">
+						<option value="Appetizer"> Appetizer </option>
+						<option value="Main Course"> Main Course </option>
+						<option value="Beverage  & Dessert"> Beverage  & Dessert </option>
+					    </select>
+
+					</td>
+
+					<td>
+						<input type="file" name="menu_image"/>
+					</td>
+					<td>
+					  <input type="submit" value="Update Food Menu">
+
+					</tr>
+				</form>
+				@endforeach
+			</tbody>
+
+		</table>
+
+	<form action="{{ url('/').'/restaurant_info_update/add_food_menu/'.$restaurants->id }}" method="POST">
+	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">
+	    
+	    <h4> Add Food Menu </h4>
+		<table>
+			<col width="120">
+	  		<col width="120">
+
+			<thead>
+				<tr>
+					<th> Menu Name </th>
+					<th> Price </th>
+					<th> Category </th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>
+						<input type="text"  name="new_menu_name">
+					</td>
+				
+					<td>
+						<input type="text"  name="new_menu_price">
+					</td>
+					
+					<td>
+					    <select name="new_menu_category" class="form-control">
+						<option value="Appetizer"> Appetizer </option>
+						<option value="Main Course"> Main Course </option>
+						<option value="Beverage  & Dessert"> Beverage  & Dessert </option>
+					    </select>
+
+					</td>
+
+					<td>
+						<input type="file" name="new_menu_image"/>
+
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<input type="submit" value="Add Food Menu">
+	    
+	</form>
+
 </div>
 
 @endsection

@@ -70,4 +70,8 @@ Route::post('/restaurant_info_update/add_table/{id}', 'RestaurantOwnerController
 
 Route::post('/restaurant_info_update/update_table/{table_id}', 'RestaurantOwnerController@updateRestaurantTable');
 
+Route::post('/restaurant_info_update/add_food_menu/{id}', 'RestaurantOwnerController@addFoodMenu');
+
+Route::post('/restaurant_info_update/update_food_menu/{menu_id}', 'RestaurantOwnerController@updateFoodMenu');
+
 Route::post('book', 'BookingController@book');
