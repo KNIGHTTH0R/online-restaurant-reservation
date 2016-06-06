@@ -52,10 +52,11 @@ class RestaurantOwnerController extends Controller
         $restaurant->website = $req->input('website');
 	$restaurant->description = $req->input('description');
 	$restaurant->owner_id = Auth::user()->id;
+	$restaurant->save();
 	if($req->hasFile('image') && $req->file('image')->isValid()){
 	    $image_file = $req->file('image');
-	    $req->file('image')->move('img/', $restaurant->name.$req->file('image')->getClientOriginalName());
-	    $restaurant->img_name = $restaurant->name.$req->file('image')->getClientOriginalName(); 
+	    $req->file('image')->move('img/', $restaurant->id.'_'.$req->file('image')->getClientOriginalName());
+	    $restaurant->img_name = $restaurant->id.'_'.$req->file('image')->getClientOriginalName(); 
 	}
 	$restaurant->save();
 	return redirect('/account');
@@ -68,8 +69,8 @@ class RestaurantOwnerController extends Controller
 	$food_menu->category = $req->menu_category;
 	if($req->hasFile('menu_image') && $req->file('menu_image')->isValid()){
 	    $image_file = $req->file('menu_image');
-	    $req->file('menu_image')->move('img/', $req->file('menu_image')->getClientOriginalName());
-	    $food_menu->img_name = $req->file('menu_image')->getClientOriginalName(); 
+	    $req->file('menu_image')->move('img/', $food_menu->id.'_'.$req->file('menu_image')->getClientOriginalName());
+	    $food_menu->img_name = $food_menu->id.'_'.$req->file('menu_image')->getClientOriginalName(); 
 	}
 	$food_menu->save();
 	return redirect()->back();
@@ -82,10 +83,11 @@ class RestaurantOwnerController extends Controller
 	$food_menu->name = $req->new_menu_name;
 	$food_menu->price = $req->new_menu_price;
 	$food_menu->category = $req->new_menu_category;
+	$food_menu->save();
 	if($req->hasFile('new_menu_image') && $req->file('new_menu_image')->isValid()){
 	    $image_file = $req->file('new_menu_image');
-	    $req->file('new_menu_image')->move('img/', $req->file('new_menu_image')->getClientOriginalName());
-	    $food_menu->img_name = $req->file('new_menu_image')->getClientOriginalName(); 
+	    $req->file('new_menu_image')->move('img/', $food_menu->id.'_'.$req->file('new_menu_image')->getClientOriginalName());
+	    $food_menu->img_name = $food_menu->id.'_'.$req->file('new_menu_image')->getClientOriginalName(); 
 	}
 	$food_menu->save();
 	return redirect()->back();
