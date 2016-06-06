@@ -31,12 +31,33 @@ Route::get('/restaurants/{id}', 'RestaurantController@show');
 
 Route::auth();
 
-Route::get('/account', 'AuthController@showAccount');
+Route::get('/account', function () {
+	if(Auth::user()->user_type == 1)
+	{
+	    //return view('restaurantOwner.owner_account', ['restaurants' => Restaurant::all()]);
+	    return view('account', ['restaurants' => Restaurant::all()]);
+	}
+	else
+	{
+	    return view('account');
+	}
+});
 
 
-Route::get('/account/update', 'AuthController@showUpdateAccount');
+Route::get('/account/update', function(){
+    return view('account_update');
+});
 
-Route::put('/account', 'AuthController@updateAccount');
+Route::put('/account', function(){
+    $user = Auth::user();
+    $user->first_name = Input::get('first_name');
+    $user->last_name = Input::get('last_name');
+    $user->contact_number = Input::get('contact');
+    $user->billing_address = Input::get('bill');
+    $user->save();
+
+    return redirect('/account');
+});
 
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
 
