@@ -78,6 +78,8 @@
 	
 		<p> <br> <br> </p>
 		<h4> Update Existing Tables </h4>
+		<br>
+
 		<table>
 			<col width="120">
 	  		<col width="120">
@@ -120,8 +122,11 @@
 	
 	<form action="{{ url('/').'/restaurant_info_update/add_table/'.$restaurants->id }}" method="POST" role="form">
 	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">
-	    
+	    <p><br><br></p>
+
 	    <h4> Add Table </h4>
+	    <br>
+
 		<table>
 			<col width="120">
 	  		<col width="120">
@@ -154,15 +159,18 @@
 		<input type="submit" value="Add Table">
 	    
 	</form>
-	    
+	    <p><br><br></p>
+
 	    <h4> Update Food Menu </h4>
+	    <br>
+
 		<table>
 			<col width="120">
 	  		<col width="120">
 
 			<thead>
 				<tr>
-				        <th> Menu Name </th>
+				    <th> Menu Name </th>
 					<th> Price </th>
 					<th> Category </th>
 				</tr>
@@ -181,14 +189,9 @@
 					<td>
 						<input type="text" name="menu_price" value="{{ $menu->price }}">
 					</td>
-					
-					<td>
-					    <select name="menu_category" class="form-control">
-						<option value="Appetizer"> Appetizer </option>
-						<option value="Main Course"> Main Course </option>
-						<option value="Beverage  & Dessert"> Beverage  & Dessert </option>
-					    </select>
 
+					<td>
+						<input type="text" value={{ $menu->category }} class="field left" readonly>
 					</td>
 
 					<td>
@@ -207,7 +210,10 @@
 	<form action="{{ url('/').'/restaurant_info_update/add_food_menu/'.$restaurants->id }}" enctype="multipart/form-data" method="POST">
 	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">
 	    
+	    <p><br><br></p>
 	    <h4> Add Food Menu </h4>
+	    <br>
+
 		<table>
 			<col width="120">
 	  		<col width="120">
