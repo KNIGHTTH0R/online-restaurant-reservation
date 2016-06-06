@@ -46,7 +46,7 @@ class RestaurantOwnerController extends Controller
         $restaurant->name = $req->input('name');
         $restaurant->location = $req->input('location');
         $restaurant->email = $req->input('email');
-        $restaurant->contact_number = $req->input('contactno');
+        $restaurant->contact_number = $req->input('Contact');
         $restaurant->website = $req->input('website');
 	$restaurant->description = $req->input('description');
 	$restaurant->owner_id = Auth::user()->id;
@@ -55,6 +55,10 @@ class RestaurantOwnerController extends Controller
 	    $req->file('image')->move('img/', $restaurant->name.$req->file('image')->getClientOriginalName());
 	    $restaurant->img_name = $restaurant->name.$req->file('image')->getClientOriginalName(); 
 	}
+	$this->validate($req, [
+		'name' => 'required',
+		'Contact' => 'required|integer'
+	]) ;
 	$restaurant->save();
 	return redirect('/account');
     }

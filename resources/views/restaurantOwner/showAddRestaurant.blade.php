@@ -28,6 +28,11 @@
 					<td><strong>Name:</strong></td>
 					<td>
 						<input type="text" name="name">
+						@if ($errors->has('name'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('name') }}</strong>
+							</span>
+						@endif
 					</td>
 				</tr>
 				
@@ -48,7 +53,12 @@
 				<tr>
 					<td> <strong>Contact NO:</strong></td>
 					<td>
-						<input type="text" name="contactno"/>
+						<input type="text" name="Contact"/>
+						@if ($errors->has('Contact'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('Contact') }}</strong>
+							</span>
+						@endif
 					</td>
 				</tr>
 

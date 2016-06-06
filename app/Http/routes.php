@@ -49,14 +49,15 @@ Route::get('/account/update', function(){
 });
 
 Route::put('/account', function(){
-    $user = Auth::user();
-    $user->first_name = Input::get('first_name');
-    $user->last_name = Input::get('last_name');
-    $user->contact_number = Input::get('contact');
-    $user->billing_address = Input::get('bill');
-    $user->save();
+    	$user = Auth::user();
+    	$user->first_name = Input::get('first_name');
+	$user->last_name = Input::get('last_name');
+	$user->contact_number = Input::get('contact');
+	$user->billing_address = Input::get('bill');
 
-    return redirect('/account');
+	$user->save();
+	
+	return redirect('/account');
 });
 
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
