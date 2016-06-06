@@ -69,11 +69,11 @@
 	
 	</form>
 	@if(count($featured_restaurants) > 0)
-	<div class="container" id="featured-restaurants"  style="margin-left: 20%">	
+	<div class="container" id="featured-restaurants" style="text-align:center">	
 		<h1>Featured Restaurants</h1>
         <div class="row">
             <div class="box">
-                <div class="col-lg-8 text-center">
+                <div class="col-lg-8 text-center" style="margin-left:17%; margin-right:17%">
                     <div id="carousel-example-generic" class="carousel slide" data-interval="3000" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators hidden-xs">
@@ -122,7 +122,7 @@
 
 	<!--Recent reviews and top places-->
 	
-	<div class="container">
+	<div class="container" style="text-align: left">
 
     <!--Row with two equal columns-->
 
