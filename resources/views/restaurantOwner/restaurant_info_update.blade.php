@@ -171,7 +171,7 @@
 			<tbody>
 				<!-- Restaurant id has to be passed from controller/prev page -->
 				@foreach ($food_menus as $menu)
-			    	<form action="{{ url('/').'/restaurant_info_update/update_food_menu/'.$menu->id }}" method="POST">
+			    	<form action="{{ url('/').'/restaurant_info_update/update_food_menu/'.$menu->id }}" enctype="multipart/form-data" method="POST">
 					<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 					<tr>
 					<td>
@@ -204,7 +204,7 @@
 
 		</table>
 
-	<form action="{{ url('/').'/restaurant_info_update/add_food_menu/'.$restaurants->id }}" method="POST">
+	<form action="{{ url('/').'/restaurant_info_update/add_food_menu/'.$restaurants->id }}" enctype="multipart/form-data" method="POST">
 	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">
 	    
 	    <h4> Add Food Menu </h4>

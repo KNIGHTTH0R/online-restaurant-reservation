@@ -66,6 +66,11 @@ class RestaurantOwnerController extends Controller
 	$food_menu->name = $req->menu_name;
 	$food_menu->price = $req->menu_price;
 	$food_menu->category = $req->menu_category;
+	if($req->hasFile('menu_image') && $req->file('menu_image')->isValid()){
+	    $image_file = $req->file('menu_image');
+	    $req->file('menu_image')->move('img/', $req->file('menu_image')->getClientOriginalName());
+	    $food_menu->img_name = $req->file('menu_image')->getClientOriginalName(); 
+	}
 	$food_menu->save();
 	return redirect()->back();
     }
@@ -79,8 +84,8 @@ class RestaurantOwnerController extends Controller
 	$food_menu->category = $req->new_menu_category;
 	if($req->hasFile('new_menu_image') && $req->file('new_menu_image')->isValid()){
 	    $image_file = $req->file('new_menu_image');
-	    $req->file('new_menu_image')->move('img/', $restaurant->name.$req->file('new_menu_image')->getClientOriginalName());
-	    $food_menu->img_name = $restaurant->name.$req->file('new_menu_image')->getClientOriginalName(); 
+	    $req->file('new_menu_image')->move('img/', $req->file('new_menu_image')->getClientOriginalName());
+	    $food_menu->img_name = $req->file('new_menu_image')->getClientOriginalName(); 
 	}
 	$food_menu->save();
 	return redirect()->back();
