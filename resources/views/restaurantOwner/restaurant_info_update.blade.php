@@ -240,7 +240,7 @@
 					    <select name="new_menu_category" class="form-control">
 						<option value="Appetizer"> Appetizer </option>
 						<option value="Main Course"> Main Course </option>
-						<option value="Beverage  & Dessert"> Beverage  & Dessert </option>
+						<option value="Beverage  & Dessert"> Beverage & Dessert </option>
 					    </select>
 
 					</td>

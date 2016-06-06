@@ -177,10 +177,10 @@
 		<!--Row with three equal columns-->
 			<h1> Menu </h1>
 			<div class="row">
-
+				@foreach(['Appetizer','Main Course','Beverage & Dessert'] as $menu_category)
 				<div class="col-sm-4" style = "padding-left: 30px; padding-right: 30px">
 					<div class="Most Popular Places">
-						<h3>Appetizer</h3>
+						<h3>{{ $menu_category }}</h3>
 						<div class="row" style="height: 350px; overflow-y:scroll">
 							<div class="col-sm-6" style="margin-top: 10px; text-align: left">
 								<table>
@@ -192,7 +192,7 @@
 									</thead>
 									<tbody>
 										@foreach($food_menus as $menu)
-										@if($menu->category == "appetizer")
+										@if($menu->category == $menu_category)
 										<tr>
 											<td>
 												{{ $menu->name }}
@@ -207,7 +207,7 @@
 								<h4> Price </h4>
 								<ul style="list-style-type: none">
 									@foreach($food_menus as $menu)
-										@if($menu->category == "appetizer")
+										@if($menu->category == $menu_category)
 											<li>
 												{{ $menu->price }}/-
 											</li>
@@ -217,92 +217,9 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
-
-				<div class="col-sm-4" style = "padding-left: 30px; padding-right: 30px">
-					<div class="Most Popular Places">
-						<h3>Main Course</h3>
-						<div class="row" style="height: 350px; overflow-y:scroll">
-							<div class="col-sm-6" style="margin-top: 10px; text-align: left">
-								<table>
-									<!-- $$Read from database and use laravel for integration-->
-									<thead>
-										<tr>
-											<h4> Item </h4>
-										<tr>
-									</thead>
-									<tbody>
-										@foreach($food_menus as $menu)
-										@if($menu->category == "main course")
-										<tr>
-											<td>
-												{{ $menu->name }}
-											</td>
-										</tr>
-										@endif
-										@endforeach
-									</tbody>
-								</table>
-							</div>
-							<div class="col-sm-6" style="margin-top: 10px; text-align: right">
-								<h4> Price </h4>
-								<ul style="list-style-type: none">
-									@foreach($food_menus as $menu)
-										@if($menu->category == "main course")
-											<li>
-												{{ $menu->price }}/-
-											</li>
-										@endif
-									@endforeach
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-sm-4" style = "padding-left: 30px; padding-right: 30px">
-					<div class="Most Popular Places">
-						<h3>Beverage  & Dessert</h3>
-						<div class="row" style="height: 350px; overflow-y:scroll">
-							<div class="col-sm-6" style="margin-top: 10px; text-align: left">
-								<table>
-									<!-- $$Read from database and use laravel for integration-->
-									<thead>
-										<tr>
-											<h4> Item </h4>
-										<tr>
-									</thead>
-									<tbody>
-										@foreach($food_menus as $menu)
-										@if($menu->category == "beverage and dessert")
-										<tr>
-											<td>
-												{{ $menu->name }}
-											</td>
-										</tr>
-										@endif
-										@endforeach
-									</tbody>
-								</table>
-							</div>
-							<div class="col-sm-6" style="margin-top: 10px; text-align: right">
-								<h4> Price </h4>
-								<ul style="list-style-type: none">
-									@foreach($food_menus as $menu)
-										@if($menu->category == "beverage and dessert")
-											<li>
-												{{ $menu->price }}/-
-											</li>
-										@endif
-									@endforeach
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div>
+				@endforeach
+			</div>
 			</div>
 		</div>
 	</section>
