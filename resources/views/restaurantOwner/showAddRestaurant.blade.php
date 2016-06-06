@@ -8,7 +8,7 @@
     <div class="row">
 	<div class="col-md-12">
 
-	    	<form action="{{ url('/restaurantOwner/storeRestaurant') }}" method="POST" enctype="multipart/form-data">
+	    	<form action="{{ url('/restaurantOwner/storeRestaurant') }}" method="POST" enctype="multipart/form-data" role="form">
 
 		<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 		
@@ -27,49 +27,51 @@
 				<tr>
 					<td><strong>Name:</strong></td>
 					<td>
-						<input type="text" name="name">
+						<input type="text" name="name" class="form-control">
 					</td>
 				</tr>
 				
 				<tr>
 					<td><strong>Location:</strong></td>
 					<td>
-						<input type="text" name="location">
+						<input type="text" name="location" class="form-control">
 					</td>
 				</tr>
 
 				<tr>
 					<td> <strong>Email:</strong></td>
 					<td>
-						<input type="text" name="email">
+						<input type="text" name="email" class="form-control">
 					</td>
 				</tr>
 
 				<tr>
 					<td> <strong>Contact NO:</strong></td>
 					<td>
-						<input type="text" name="contactno"/>
+						<input type="text" name="contactno" class="form-control">
 					</td>
 				</tr>
 
 				<tr>
 					<td> <strong>Website:</strong></td>
 					<td>
-					    <input type="text" name="website"/>
+					    <input type="text" name="website" class="form-control">
 					</td>
 				</tr>
 				
 				<tr>
 					<td> <strong>Image:</strong></td>
 					<td>
-					    <input type="file" name="image"/>
+						<br>
+					    <input type="file" name="image">
+					    <br>
 					</td>
 				</tr>
 				
 				<tr>
 					<td> <strong>Description:</strong></td>
 					<td>
-					    <input type="text" name="description"/>
+					    <input type="textarea" name="description" class="form-control">
 					</td>
 				</tr>
    			</tbody>
