@@ -56,7 +56,7 @@
 
 	<p> <br> </p>
 	<p>
-		<a href="{{ url('/').'/restaurant/addRestaurant' }}"> <h4>Add a Restaurant</h4> </a>
+		<a href="{{ url('/').'/restaurantOwner/addRestaurant' }}"> <h4>Add a Restaurant</h4> </a>
 	</p>	
 	<h4> List of my Restaurants </h4>
 	<div style="height: 300px; overflow-y:scroll; margin-left:20px; margin-right: 40px; padding-left:70px; padding-right:20px">
@@ -79,7 +79,7 @@
 						{{ $restaurant->location }}
 					</td>
 					<td>
-						<a href="{{ url('/').'/restaurant_info_update'.$restaurant->id }}"> <h4>Update</h4> </a>
+						<a href="{{ url('/').'/restaurant_info_update/'.$restaurant->id }}"> <h4>Update</h4> </a>
 					</td>
 				</tr>
 				@endif

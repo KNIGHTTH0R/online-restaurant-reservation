@@ -14,6 +14,10 @@ class Restaurant extends Model
     {
         return $this->hasMany('App\Review', 'restaurant_id');
     }
+    public function restaurant_tables()
+    {
+        return $this->hasMany('App\RestaurantTable', 'restaurant_id');
+    }
 
     public function food_menus()
     {
