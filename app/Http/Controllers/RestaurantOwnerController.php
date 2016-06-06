@@ -50,6 +50,11 @@ class RestaurantOwnerController extends Controller
         $restaurant->website = $req->input('website');
 	$restaurant->description = $req->input('description');
 	$restaurant->owner_id = Auth::user()->id;
+	if($req->hasFile('image') && $req->file('image')->isValid()){
+	    $image_file = $req->file('image');
+	    $req->file('image')->move('img/', $restaurant->name.$req->file('image')->getClientOriginalName());
+	    $restaurant->img_name = $restaurant->name.$req->file('image')->getClientOriginalName(); 
+	}
 	$restaurant->save();
 	return redirect('/account');
     }

@@ -8,7 +8,7 @@
     <div class="row">
 	<div class="col-md-12">
 
-	    	<form action="{{ url('/restaurantOwner/storeRestaurant') }}" method="POST">
+	    	<form action="{{ url('/restaurantOwner/storeRestaurant') }}" method="POST" enctype="multipart/form-data">
 
 		<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 		
@@ -58,14 +58,14 @@
 					    <input type="text" name="website"/>
 					</td>
 				</tr>
-				<!-- how to do this?
+				
 				<tr>
 					<td> <strong>Image:</strong></td>
 					<td>
-					    <input type="text" id="image" name="image"/>
+					    <input type="file" name="image"/>
 					</td>
 				</tr>
-				-->
+				
 				<tr>
 					<td> <strong>Description:</strong></td>
 					<td>
@@ -76,7 +76,7 @@
 
 		</table>
 
-		<input type="submit" value="Update">
+		<input type="submit" value="Add">
 	    </form>
 	</div>
     </div>
