@@ -44,7 +44,7 @@ class RestaurantController extends Controller
     {
     	$name = $request->input('name');
     	$location = $request->input('location');
-    	$category = $request->input('category');
+    	$cuisine = $request->input('cuisine');
     	$reservation_date = $request->input('reservation-date');
     	$timeslot = $request->input('reservation-time');
     	$num_of_persons = $request->input('num-of-persons');
@@ -59,11 +59,11 @@ class RestaurantController extends Controller
     	{
     	    $query = $query->where('r.name', 'LIKE', '%'.$name.'%');
     	}
-    	if($category != 'none')
+    	if($cuisine != 'none')
     	{
-            $query = $query->where('c.category_name', 'LIKE', $category)
-                ->join('offered_category as oc', 'r.id', '=', 'oc.restaurant_id')
-                ->join('restaurant_category as c', 'c.id', '=', 'oc.category_id');
+            $query = $query->where('c.cname', 'LIKE', $cuisine)
+                ->join('offered_cuisine as oc', 'r.id', '=', 'oc.restaurant_id')
+                ->join('cuisine as c', 'c.id', '=', 'oc.cuisine_id');
         }
 
     	$restaurants = $query->get();

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Review;
 use App\User;
-use App\Restaurant_Category;
+use App\Cuisine;
 
 class HomeController extends Controller
 {
@@ -37,7 +37,8 @@ class HomeController extends Controller
             
             return ['user_name' => $user_name, 'restaurant_name' => $restaurant_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
 	});
+
 	$popular = Restaurant::where('featured', true)->take(2)->get();
-        return view('home', ['restaurant_categories' => Restaurant_Category::all(), 'popular_restaurants' => $popular, 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
+        return view('home', ['cuisines' => Cuisine::all(), 'popular_restaurants' => $popular, 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
     }
 }

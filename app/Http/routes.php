@@ -45,19 +45,19 @@ Route::put('restaurant_info_update/{id}', 'RestaurantOwnerController@updateResta
 
 Route::post('/restaurant_info_update/add_table/{id}', 'RestaurantOwnerController@addRestaurantTable');
 
+Route::post('/restaurant_info_update/add_cuisine/{id}', 'RestaurantOwnerController@addCuisine');
+
 Route::post('/restaurant_info_update/update_table/{table_id}', 'RestaurantOwnerController@updateRestaurantTable');
 
 Route::post('/restaurant_info_update/add_food_menu/{id}', 'RestaurantOwnerController@addFoodMenu');
 
 Route::post('/restaurant_info_update/update_food_menu/{menu_id}', 'RestaurantOwnerController@updateFoodMenu');
 
-Route::post('book', 'BookingController@book');
+
 
 Route::delete('/restaurant_info_update/delete_table/{id}', 'RestaurantOwnerController@deleteRestaurantTable');
 
 Route::delete('/restaurant_info_update/delete_food_menu/{id}', 'RestaurantOwnerController@deleteFoodMenu');
-
-
 
 Route::post('payment', array(
     'as' => 'payment',
@@ -69,3 +69,4 @@ Route::get('payment/status', array(
     'as' => 'payment.status',
     'uses' => 'TransactionController@getPaymentStatus',
 ));
+Route::post('book', 'BookingController@book');

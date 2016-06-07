@@ -24,8 +24,8 @@ class Restaurant extends Model
         return $this->hasMany('App\Food_Menu', 'restaurant_id');
     }
 
-    public function categories()
+    public function cuisines()
     {
-        return $this->belongsToMany('App\Restaurant_category', 'offered_category', 'category_id', 'restaurant_id');
+        return $this->belongsToMany('App\Cuisine', 'offered_cuisine', 'cuisine_id', 'restaurant_id');
     }
 }

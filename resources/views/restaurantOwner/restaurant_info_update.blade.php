@@ -110,6 +110,38 @@
 
 		<input type="submit" value="Update">
 	</form>
+
+	<form action="{{ url('/').'/restaurant_info_update/add_cuisine/'.$restaurants->id }}" method="POST" role="form">
+	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">
+	    <p><br><br></p>
+
+	    <h4> Add Cuisine </h4>
+	    <br>
+
+		<table>
+			<thead>
+				<tr>
+					<th> Cuisine </th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>
+						<select name="cuisine" class="form-control">
+							<option value="none">Select Cuisine</option>
+							@foreach($cuisines as $cuisine)
+							<option value="{{ $cuisine->id }}">{{ $cuisine->cname }}</option>
+							@endforeach
+						</select>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<input type="submit" value="Add Cuisine">
+	    
+	</form>
 	
 		<p> <br> <br> </p>
 		<h4> Update Existing Tables </h4>
@@ -331,7 +363,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<input type="text"  name="new_menu_name">
+						<input type="text"  name="new_menu_name" class="form-control">
 						@if ($errors->has('new_menu_name'))
                             <span class="help-block">
                             	<strong>{{ $errors->first('new_menu_name') }}</strong>
