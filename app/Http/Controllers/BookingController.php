@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use DB;
+
 class BookingController extends Controller
 {
     //
@@ -17,7 +19,8 @@ class BookingController extends Controller
 		$reservation_time =  $req->input('reservation-time');
 
 		///Do query here
+		$available_tables = DB::select('select * from restaurant_table where restaurant_id = ? and id not in (select distinct rt.table_number from reservation rv join reservation_table rt on rv.id = rt.reservation_id where rv.reservation_date = ? and rv.reservation_time_slot = ?)', [$rest_id, $reservation_date, $reservation_time]);
 
-		return view('restaurant.book_table', );
+		return view('restaurant.book_table', ['available_tables' => $available_tables]);
     }
 }
