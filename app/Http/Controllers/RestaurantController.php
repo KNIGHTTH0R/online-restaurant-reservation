@@ -9,6 +9,7 @@ use App\Restaurant;
 use App\Food_Menu;
 use App\Review;
 use App\User;
+use Auth;
 
 class RestaurantController extends Controller
 {
@@ -68,5 +69,19 @@ class RestaurantController extends Controller
     	$restaurants = $query->get();
     	
     	return view('restaurant.search', ['restaurants' => $restaurants]);
+    }
+
+    public function storeReview(Request $req, $id)
+    {
+	$review = new Review();
+	$review->review_text = $req->input('new_review_text');
+	$review->rating = $req->input('rating');
+	$review->restaurant_id = $id;
+	if(Auth::check())
+	{
+	    $review->user_id = Auth::user()->id;
+	}
+	$review->save();
+	return redirect()->back();
     }
 }

@@ -13,10 +13,10 @@ use Auth;
 class RestaurantOwnerController extends Controller
 {
     //
-    public function __construct()
-    {
-	$this->middleware('auth');
-    }
+    //public function __construct()
+    //{
+	//$this->middleware('auth');
+    //}
     public function showAddRestaurant()
     {
         if(\Auth::check() && \Auth::user()->user_type == 1)

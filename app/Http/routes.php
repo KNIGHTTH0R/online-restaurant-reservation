@@ -28,6 +28,7 @@ Route::get('/restaurants', 'RestaurantController@showall');
 
 Route::get('/restaurants/{id}', 'RestaurantController@show');
 
+Route::post('/restaurants/{id}/give_review', 'RestaurantController@storeReview');
 
 Route::auth();
 
@@ -62,8 +63,8 @@ Route::put('/account', function(){
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
 
 Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwnerController@storeRestaurant');
-Route::get('restaurant_info_update/{id}', 'RestaurantOwnerController@showUpdateRestaurant');
 
+Route::get('restaurant_info_update/{id}', 'RestaurantOwnerController@showUpdateRestaurant');
 Route::put('restaurant_info_update/{id}', 'RestaurantOwnerController@updateRestaurant');
 
 Route::post('/restaurant_info_update/add_table/{id}', 'RestaurantOwnerController@addRestaurantTable');
