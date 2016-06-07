@@ -61,6 +61,16 @@ class RestaurantOwnerController extends Controller
 	    $rest->contact_number = $req->input('contact');
 	    $rest->website = $req->input('website');
 	    $rest->description = $req->input('desc');
+	    $this->validate($req, [
+		'location' => 'required',
+		'contact' => 'required|integer'
+	    ]) ;
+	    if($req->hasFile('image') && $req->file('image')->isValid()){
+		$image_file = $req->file('image');
+		$req->file('image')->move('img/', $id.'_'.$req->file('image')->getClientOriginalName());
+		unlink('./img/'.$rest->img_name);
+		$rest->img_name = $id.'_'.$req->file('image')->getClientOriginalName(); 
+	    }
 	    $rest->save();
 	    return redirect('restaurant_info_update/'.$id);
 	}
@@ -81,16 +91,17 @@ class RestaurantOwnerController extends Controller
 	    $restaurant->website = $req->input('website');
 	    $restaurant->description = $req->input('description');
 	    $restaurant->owner_id = Auth::user()->id;
+	    $this->validate($req, [
+		'name' => 'required',
+		'location' => 'required',
+		'Contact' => 'required|integer'
+	    ]) ;
 	    $restaurant->save();
 	    if($req->hasFile('image') && $req->file('image')->isValid()){
 		$image_file = $req->file('image');
 		$req->file('image')->move('img/', $restaurant->id.'_'.$req->file('image')->getClientOriginalName());
 		$restaurant->img_name = $restaurant->id.'_'.$req->file('image')->getClientOriginalName(); 
 	    }
-	    $this->validate($req, [
-		'name' => 'required',
-		'Contact' => 'required|integer'
-	    ]) ;
 	    $restaurant->save();
 	    return redirect('/account');
 	}
@@ -117,6 +128,10 @@ class RestaurantOwnerController extends Controller
 		$req->file('menu_image')->move('img/', $food_menu->id.'_'.$req->file('menu_image')->getClientOriginalName());
 		$food_menu->img_name = $food_menu->id.'_'.$req->file('menu_image')->getClientOriginalName(); 
 	    }
+	    $this->validate($req, [
+		'menu_name' => 'required',
+		'menu_price' => 'required|numeric',
+	    ]);
 	    $food_menu->save();
 	    return redirect()->back();
 	}
@@ -134,6 +149,11 @@ class RestaurantOwnerController extends Controller
 	    {
 		return redirect('/');
 	    }
+	    $this->validate($req, [
+		'new_menu_name' => 'required',
+		'new_menu_price' => 'required|numeric',
+	    ]) ;
+
 	    $food_menu = new Food_Menu();
 	    $food_menu->restaurant_id = $id;
 	    $food_menu->name = $req->new_menu_name;
@@ -145,6 +165,7 @@ class RestaurantOwnerController extends Controller
 		$req->file('new_menu_image')->move('img/', $food_menu->id.'_'.$req->file('new_menu_image')->getClientOriginalName());
 		$food_menu->img_name = $food_menu->id.'_'.$req->file('new_menu_image')->getClientOriginalName(); 
 	    }
+	    
 	    $food_menu->save();
 	    return redirect()->back();
 	}
@@ -162,6 +183,12 @@ class RestaurantOwnerController extends Controller
 	    {
 		return redirect('/');
 	    }
+	    $this->validate($req, [
+		'new_num_of_tables' => 'required|integer',
+		'new_capacity' => 'required|integer',
+		'new_booking_fee' => 'required|numeric'
+	    ]) ;
+
 	    $quantity = $req->input('new_num_of_tables');
 	    $capacity = $req->input('new_capacity');
 	    $booking_fee = $req->input('new_booking_fee');
@@ -191,6 +218,12 @@ class RestaurantOwnerController extends Controller
 	    {
 		return redirect('/');
 	    }
+	    $this->validate($req, [
+		'num_of_tables' => 'required|integer',
+		'capacity' => 'required|integer',
+		'booking_fee' => 'required|numeric'
+	    ]) ;
+
 	    $table->capacity = $req->input('capacity');
 	    $table->booking_fee = $req->input('booking_fee');
 	    $table->save();

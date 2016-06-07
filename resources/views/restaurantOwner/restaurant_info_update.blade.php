@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container">
-	<form action="{{ url('/').'/restaurant_info_update/'.$restaurants->id }}" method="POST" role="form">
+	<form action="{{ url('/').'/restaurant_info_update/'.$restaurants->id }}" method="POST" enctype="multipart/form-data" role="form">
 
 		<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 		<input type="hidden" name="_method" value="PUT">
@@ -56,13 +56,16 @@
 					    <input type="text" id="website" name="website" value="{{ $restaurants->website }}" class="form-control">
 					</td>
 				</tr>
-				<!-- how to do this?
+
 				<tr>
 					<td> <strong>Image:</strong></td>
 					<td>
-					    <input type="text" id="image" name="image" value="{{ $restaurants->img_name }}"/>
+					<br>
+					    <input type="file" name="image">	
+					<br>
 					</td>
-				</tr> -->
+
+				</tr> 
 				<tr>
 					<td> <strong>Description:</strong></td>
 					<td>
@@ -99,10 +102,22 @@
 					<tr>
 						<td>
 							<input type="text" name="capacity" value="{{ $table->capacity }}" class="form-control">
+							@if ($errors->has('capacity'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('capacity') }}</strong>
+							</span>
+						@endif
+
+
 						</td>
 					
 						<td>
 							<input type="text" name="booking_fee" value="{{ $table->booking_fee }}" class="form-control">
+							@if ($errors->has('booking_fee'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('booking_fee') }}</strong>
+							</span>
+						@endif	
 						</td>
 						<td>
 							<input type="submit" value="Update">
@@ -143,14 +158,32 @@
 				<tr>
 					<td>
 						<input type="text"  name="new_capacity" class="form-control">
+						@if ($errors->has('new_capacity'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('new_capacity') }}</strong>
+							</span>
+						@endif
+
 					</td>
 				
 					<td>
 						<input type="text"  name="new_booking_fee" class="form-control">
+	
+						@if ($errors->has('new_booking_fee'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('new_booking_fee') }}</strong>
+							</span>
+						@endif				
 					</td>
 					
 					<td>
 						<input type="text"  name="new_num_of_tables" class="form-control">
+						
+						@if ($errors->has('new_num_of_tables'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('new_num_of_tables') }}</strong>
+							</span>
+						@endif
 					</td>
 				</tr>
 			</tbody>
@@ -183,19 +216,31 @@
 					<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 					<tr>
 					<td>
-						<input type="text" name="menu_name" value="{{ $menu->name  }}">
+						<input type="text" class="form-control" name="menu_name" value="{{ $menu->name  }}">
+						@if ($errors->has('menu_name'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('menu_name') }}</strong>
+							</span>
+						@endif
+
 					</td>
 				
 					<td>
-						<input type="text" name="menu_price" value="{{ $menu->price }}">
+						<input type="text" class="form-control" name="menu_price" value="{{ $menu->price }}">
+						@if ($errors->has('menu_price'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('menu_price') }}</strong>
+							</span>
+						@endif
+
 					</td>
 
 					<td>
-						<input type="text" value={{ $menu->category }} class="field left" readonly>
+						<input type="text"  class="form-control" value={{ $menu->category }} class="field left" readonly>
 					</td>
 
 					<td>
-						<input type="file" name="menu_image"/>
+						<input type="file" class="form-control" name="menu_image"/>
 					</td>
 					<td>
 					  <input type="submit" value="Update Food Menu">
@@ -230,10 +275,22 @@
 				<tr>
 					<td>
 						<input type="text"  name="new_menu_name">
+						@if ($errors->has('new_menu_name'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('new_menu_name') }}</strong>
+							</span>
+						@endif
+
 					</td>
 				
 					<td>
-						<input type="text"  name="new_menu_price">
+						<input type="text"  class="form-control" name="new_menu_price">
+						@if ($errors->has('new_menu_price'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('new_menu_price') }}</strong>
+							</span>
+						@endif
+
 					</td>
 					
 					<td>
@@ -246,7 +303,7 @@
 					</td>
 
 					<td>
-						<input type="file" name="new_menu_image"/>
+						<input type="file"  class="form-control" name="new_menu_image"/>
 
 					</td>
 				</tr>
