@@ -70,6 +70,7 @@ CREATE TABLE reservation (
     reservation_fee     DOUBLE, -- This is a derived attribute found from booking_fee of the tables
     reservation_date    DATE            NOT NULL,
     reservation_time_slot VARCHAR(10)   NOT NULL, -- ONLY ALLOW SOME TIME SLOTS (SAY IN 30 MINUTES INTERVAL)  AS WE SHOWED IN UI, THIS WILL SIMPLIFY A LOT OF THINGS
+    
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 

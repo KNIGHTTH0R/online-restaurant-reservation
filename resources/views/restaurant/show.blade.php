@@ -29,6 +29,7 @@
     		<div class="col-lg-12">
 		    <h1> Reserve </h1>
 		    <div class="person-date-select"  style="display: inline-block">
+		    
 		    <form action="{{ url('book') }}" method="POST">
 			    {{ csrf_field() }}
 		    <input type="hidden" name="restaurant-id" value="{{ $restaurant->id }}">
