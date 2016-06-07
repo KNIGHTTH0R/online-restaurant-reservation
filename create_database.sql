@@ -108,7 +108,24 @@ CREATE TABLE review (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
 );
 
-
+#####################################################################################################
+delimiter //
+CREATE TRIGGER update_restaurant_rating 
+AFTER INSERT 
+    ON review FOR EACH ROW
+BEGIN
+    DECLARE numReviews INT;
+    DECLARE totalRating INT;
+    DECLARE newRating DOUBLE;
+    SET numReviews = (SELECT COUNT(*) FROM review WHERE restaurant_id = NEW.restaurant_id);
+    SELECT SUM(rating) FROM review WHERE restaurant_id = NEW.restaurant_id INTO totalRating;
+    SET newRating = (totalRating / numReviews);
+    UPDATE restaurant SET rating = newRating WHERE id = NEW.restaurant_id;
+    IF newRating > 4 THEN
+    	UPDATE restaurant SET featured = 1 WHERE id = NEW.restaurant_id;
+    END IF;
+END;//
+delimiter ;
 #####################################################################################################
 
 insert into restaurant_category (category_name) values ("Thai");
