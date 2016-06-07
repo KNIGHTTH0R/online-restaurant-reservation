@@ -63,9 +63,13 @@ class RestaurantOwnerController extends Controller
 	    $rest->description = $req->input('desc');
 	    $this->validate($req, [
 		'location' => 'required',
-		'contact' => 'required|integer'
+		'contact' => 'required',
+		'email' => 'email'
 	    ]) ;
 	    if($req->hasFile('image') && $req->file('image')->isValid()){
+		$this->validate($req, [
+		    'image' => 'image'
+		]);
 		$image_file = $req->file('image');
 		$req->file('image')->move('img/', $id.'_'.$req->file('image')->getClientOriginalName());
 		unlink('./img/'.$rest->img_name);
@@ -94,10 +98,14 @@ class RestaurantOwnerController extends Controller
 	    $this->validate($req, [
 		'name' => 'required',
 		'location' => 'required',
-		'Contact' => 'required|integer'
+		'Contact' => 'required',
+		'email' => 'email'
 	    ]) ;
-	    $restaurant->save();
 	    if($req->hasFile('image') && $req->file('image')->isValid()){
+		$this->validate($req, [
+		    'image' => 'image'
+		]);
+		$restaurant->save();
 		$image_file = $req->file('image');
 		$req->file('image')->move('img/', $restaurant->id.'_'.$req->file('image')->getClientOriginalName());
 		$restaurant->img_name = $restaurant->id.'_'.$req->file('image')->getClientOriginalName(); 
