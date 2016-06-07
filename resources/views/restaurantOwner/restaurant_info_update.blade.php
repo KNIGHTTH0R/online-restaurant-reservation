@@ -363,7 +363,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<input type="text"  name="new_menu_name">
+						<input type="text"  name="new_menu_name" class="form-control">
 						@if ($errors->has('new_menu_name'))
                             <span class="help-block">
                             	<strong>{{ $errors->first('new_menu_name') }}</strong>

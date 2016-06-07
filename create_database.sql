@@ -111,7 +111,7 @@ CREATE TABLE review (
 
 #####################################################################################################
 delimiter //
-DROP TRIGGER update_restaurant_rating;
+DROP TRIGGER IF EXISTS update_restaurant_rating;
 CREATE TRIGGER update_restaurant_rating 
 AFTER INSERT 
     ON review FOR EACH ROW
