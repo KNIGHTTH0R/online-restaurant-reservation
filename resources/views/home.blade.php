@@ -16,7 +16,12 @@
 				<option value="3">Reserve For 3</option>
 				<option value="4">Reserve For 4</option>
 				<option value="5">Reserve For 5</option>
-       	</select>
+				<option value="6">Reserve For 6</option>
+				<option value="7">Reserve For 7</option>
+				<option value="8">Reserve For 8</option>
+				<option value="9">Reserve For 9</option>
+				<option value="10">Reserve For 10</option>
+			</select>
     	</div>
 			
     	<div style="display:inline-block;">
@@ -84,7 +89,7 @@
                         </ol>
 
                         <!-- Wrapper for slides -->
-                        <div class="carousel-inner">
+                        <div class="carousel-inner" style = "height: 550px; width: 750px">
                         
                         	@foreach($featured_restaurants as $index => $restaurant)
                         	@if($index == 0)
@@ -92,7 +97,7 @@
                         	@else
                         	<div class="item">
                         	@endif
-                                <img class="img-responsive img-full" src="{{ asset('img/'.$restaurant->img_name) }}" alt="">
+                                <img class="img-responsive img-full" src="{{ asset('img/'.$restaurant->img_name) }}" alt="" style = "height: 550px; width: 750px">
                                 <div class="carousel-caption">
 										<h3>{{ $restaurant->name }}</h3>	
 								</div>

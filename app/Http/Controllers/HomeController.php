@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $featured = Restaurant::where('featured', true)->get();
-	$reviews = Review::orderBy('created_at', 'desc')->take(3)->get();
+	$reviews = Review::orderBy('created_at', 'desc')->where('review_text', '!=' ,'')->take(3)->get();
         $r_r = $reviews->map(function($item, $key) {
             $user_name = ($item->user_id == null ? "Anonymous" : User::find($item->user_id)->user_name);
             

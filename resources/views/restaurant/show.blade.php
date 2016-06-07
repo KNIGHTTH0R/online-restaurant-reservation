@@ -13,7 +13,7 @@
 			<div class="col-lg-12">
 				<h1>{{ $restaurant->name }}</h1>
 				<!-- $$ Read from database -->
-				<img src="{{ asset('img/'.$restaurant->img_name) }}" height="375px"/>
+				<img src="{{ asset('img/'.$restaurant->img_name) }}" height="350px"/>
 				<!-- $$ Read img src from database -->
 			</div>
 		</div>
@@ -65,8 +65,6 @@
 		<option value="3">08:00PM</option>
 		<option value="4">08:30PM</option>
 		<option value="5">09:00PM</option>
-		<option value="6">09:30PM</option>
-		<option value="7">10:00PM</option>
 	</select>
 </div>
 
@@ -90,38 +88,38 @@
 
 <section id="about" class="about-section">
 	<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<h1>About Us</h1>
-				<!-- $$ Show google map image-->
-				<!--<div style="display: inline-block; margin-left: -120px">
-					<p> show the google map image here and delete this line </p>
-					<img src="img/Gloria_Jeans_Coffee.jpg" height="225px"/>
-				</div>
-				-->
-				<!--
-				<div style="display: inline-block; margin-left:50px; vertical-align: top-text">
-					<p> {{ $restaurant->location }} </p>
-				</div>
-				-->
-				<div style="margin-top: 30px">
-					<p>{{ $restaurant->description }}</p>
-				</div>
-
-				</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1>About Us</h1>
+			<!-- $$ Show google map image-->
+			<!--<div style="display: inline-block; margin-left: -120px">
+				<p> show the google map image here and delete this line </p>
+				<img src="img/Gloria_Jeans_Coffee.jpg" height="225px"/>
 			</div>
+			-->
+			<!--
+			<div style="display: inline-block; margin-left:50px; vertical-align: top-text">
+				<p> {{ $restaurant->location }} </p>
+			</div>
+			-->
+			<div style="margin-top: 30px">
+				<p>{{ $restaurant->description }}</p>
+			</div>
+
+			</div>
+		</div>
 	</div>
 </section>
 
 <!-- Photos Section -->
 <section id="photos" class="photos-section">
-	<div class="container" style="margin-top: -100px">
+	<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 				<h1> Photos </h1>
 				<!-- $$ bring photos from database, not sure where to be added-->
 
-				<div class="container" id="photos"  style="margin-left: 20%">
+				<div class="container" id="photos"  style="margin-left: 27%; width: 75%"">
 					<div class="row">
 						<div class="box">
 							<div class="col-lg-8 text-center">
@@ -135,7 +133,7 @@
 									</ol>
 
 									<!-- Wrapper for slides -->
-									<div class="carousel-inner">
+									<div class="carousel-inner" style = "height: 400px; width: 500px">
 
 										@foreach($food_menus as $index => $menu)
 										@if($index == 0)
@@ -143,7 +141,7 @@
 										@else
 										<div class="item">
 										@endif
-												<img class="img-responsive img-full" src="{{ asset('img/'.$menu->img_name) }}" alt="">
+												<img class="img-responsive img-full" src="{{ asset('img/'.$menu->img_name) }}" alt="" style = "height: 400px; width: 500px">
 												<div class="carousel-caption">
 													<h3>{{ $menu->name }}</h3>
 											</div>
@@ -261,22 +259,22 @@
 
 <section class="review-section">
     <h1> Give Review </h1>
-    <div class="container">
+    <div class="container" style="margin-top: 50px">
 	<div class="row">
 	    <div class="col-md-12">
 		<form id="review_form" action="{{ url('/restaurants/'.$restaurant->id.'/give_review') }}" method="POST">
 		    {{ csrf_field() }}
 		    <label for="rating">Rating: </label> 
-		    <select name="rating" class="form-control">
+		    <select name="rating">
 			<option value="1">1</option>
 			<option value="2">2</option>
 			<option value="3">3</option>
 			<option value="4">4</option>	
 			<option value="5" selected>5</option>
 		    </select>
-		    <label for="new_review_text">Comment: </label>
+		    <h5> <label for="new_review_text">Comment: </label> </h5>
 		    <textarea name="new_review_text" id="new_review_text" cols=50 rows=10 style="font-size:20px"></textarea>
-		    <input type="submit" value="Give Review">
+		    <p> <input type="submit" value="Give Review"> </p>
 		</form>
 	    </div>
 	</div>
