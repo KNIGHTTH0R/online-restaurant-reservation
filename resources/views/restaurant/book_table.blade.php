@@ -26,7 +26,6 @@ BOOK TABLE
 				<td>{{ $available_table->capacity }}</td>
 				<td>{{ $available_table->id }}</td>
 				<td>{{ $available_table->booking_fee }}</td>
-				<br>
 				@endforeach
 			</tr>
 		</tbody>	
