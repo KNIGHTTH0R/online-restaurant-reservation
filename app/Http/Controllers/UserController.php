@@ -35,7 +35,7 @@ class UserController extends Controller
     {
 	$user = Auth::user();
 	$this->validate($req, [
-	    'contact' => 'required|integer'
+	    'contact' => 'required|numeric'
 	]);
 	$user->first_name = $req->input('first_name');
 	$user->last_name = $req->input('last_name');
