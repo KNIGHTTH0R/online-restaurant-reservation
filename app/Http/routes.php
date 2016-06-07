@@ -28,6 +28,7 @@ Route::get('/restaurants', 'RestaurantController@showall');
 
 Route::get('/restaurants/{id}', 'RestaurantController@show');
 
+Route::post('/restaurants/{id}/give_review', 'RestaurantController@storeReview');
 
 Route::auth();
 
@@ -49,22 +50,21 @@ Route::get('/account/update', function(){
 });
 
 Route::put('/account', function(){
-    	$user = Auth::user();
-    	$user->first_name = Input::get('first_name');
-	$user->last_name = Input::get('last_name');
-	$user->contact_number = Input::get('contact');
-	$user->billing_address = Input::get('bill');
+    $user = Auth::user();
+    $user->first_name = Input::get('first_name');
+    $user->last_name = Input::get('last_name');
+    $user->contact_number = Input::get('contact');
+    $user->billing_address = Input::get('bill');
+    $user->save();
 
-	$user->save();
-	
-	return redirect('/account');
+    return redirect('/account');
 });
 
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
 
 Route::post('/restaurantOwner/storeRestaurant', 'RestaurantOwnerController@storeRestaurant');
-Route::get('restaurant_info_update/{id}', 'RestaurantOwnerController@showUpdateRestaurant');
 
+Route::get('restaurant_info_update/{id}', 'RestaurantOwnerController@showUpdateRestaurant');
 Route::put('restaurant_info_update/{id}', 'RestaurantOwnerController@updateRestaurant');
 
 Route::post('/restaurant_info_update/add_table/{id}', 'RestaurantOwnerController@addRestaurantTable');
