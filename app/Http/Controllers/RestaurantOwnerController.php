@@ -75,7 +75,9 @@ class RestaurantOwnerController extends Controller
 		]);
 		$image_file = $req->file('image');
 		$req->file('image')->move('img/', $id.'_'.$req->file('image')->getClientOriginalName());
-		unlink('./img/'.$rest->img_name);
+		if($rest->img_name != null && file_exists('./img/'.$rest->img_name)){
+			unlink('./img/'.$rest->img_name);
+		}
 		$rest->img_name = $id.'_'.$req->file('image')->getClientOriginalName(); 
 	    }
 	    $rest->save();
