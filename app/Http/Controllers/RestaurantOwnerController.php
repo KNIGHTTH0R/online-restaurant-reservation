@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Restaurant;
 use App\RestaurantTable;
 use App\Food_Menu;
+use App\Cuisine;
+use App\Offered_Cuisine;
 use Auth;
 
 class RestaurantOwnerController extends Controller
@@ -39,7 +41,8 @@ class RestaurantOwnerController extends Controller
 	    }
 	    $tables = RestaurantTable::where('restaurant_id', '=', $id)->orderBy('capacity', 'asc')->orderBy('booking_fee', 'asc')->get();
 	    $food_menus = Food_Menu::where('restaurant_id', '=', $id)->get();
-	    return view('restaurantOwner.restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables, 'food_menus' => $food_menus]);
+	    $cuisines = Cuisine::all();
+	    return view('restaurantOwner.restaurant_info_update', ['restaurants' => $rest, 'restaurant_tables' => $tables, 'cuisines' => $cuisines, 'food_menus' => $food_menus]);
 	}
 	else
 	{
@@ -262,5 +265,14 @@ class RestaurantOwnerController extends Controller
 		}
 		return redirect()->back();
 
+    }
+
+    public function addCuisine(Request $req, $id)
+    {
+    	$offered_cuisne = new Offered_Cuisine();
+    	$offered_cuisne->cuisine_id = $req->input('cuisine'); 
+    	$offered_cuisne->restaurant_id = $id;
+    	$offered_cuisne->save();
+    	return redirect()->back();
     }
 }

@@ -2,8 +2,8 @@ DROP DATABASE IF EXISTS orr_test;
 CREATE DATABASE orr_test;
 USE orr_test;
 
-DROP TABLE IF EXISTS offered_category;
-DROP TABLE IF EXISTS restaurant_category;
+DROP TABLE IF EXISTS offered_cuisine;
+DROP TABLE IF EXISTS cuisine;
 DROP TABLE IF EXISTS review;
 DROP TABLE IF EXISTS reserved_table;
 DROP TABLE IF EXISTS reservation;
@@ -84,16 +84,16 @@ CREATE TABLE reservation_table (
     FOREIGN KEY (restaurant_id) REFERENCES restaurant_table(restaurant_id) ON DELETE CASCADE
 );
 
-CREATE TABLE restaurant_category (
+CREATE TABLE cuisine (
     id                   INT             AUTO_INCREMENT PRIMARY KEY,
-    category_name       VARCHAR(20)     NOT NULL
+    cname       VARCHAR(20)     NOT NULL
 );
 
-CREATE TABLE offered_category (
-    category_id         INT,
+CREATE TABLE offered_cuisine (
+    cuisine_id         INT,
     restaurant_id       INT,
-    PRIMARY KEY (category_id, restaurant_id),
-    FOREIGN KEY (category_id) REFERENCES restaurant_category(id) ON DELETE CASCADE,
+    PRIMARY KEY (cuisine_id, restaurant_id),
+    FOREIGN KEY (cuisine_id) REFERENCES cuisine(id) ON DELETE CASCADE,
     FOREIGN KEY (restaurant_id) REFERENCES restaurant(id) ON DELETE CASCADE
 );
 
@@ -129,12 +129,12 @@ END;//
 delimiter ;
 #####################################################################################################
 
-insert into restaurant_category (category_name) values ("Thai");
-insert into restaurant_category (category_name) values ("Chinese");
-insert into restaurant_category (category_name) values ("Bangali");
-insert into restaurant_category (category_name) values ("Italian");
-insert into restaurant_category (category_name) values ("Seafood");
-insert into restaurant_category (category_name) values ("Fast Food");
+insert into cuisine (cname) values ("Thai");
+insert into cuisine (cname) values ("Chinese");
+insert into cuisine(cname) values ("Bangali");
+insert into cuisine(cname) values ("Italian");
+insert into cuisine (cname) values ("Seafood");
+insert into cuisine (cname) values ("Fast Food");
 
 
 
