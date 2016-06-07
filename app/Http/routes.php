@@ -32,33 +32,9 @@ Route::post('/restaurants/{id}/give_review', 'RestaurantController@storeReview')
 
 Route::auth();
 
-Route::get('/account', function () {
-	if(Auth::user()->user_type == 1)
-	{
-	    //return view('restaurantOwner.owner_account', ['restaurants' => Restaurant::all()]);
-	    return view('account', ['restaurants' => Restaurant::all()]);
-	}
-	else
-	{
-	    return view('account');
-	}
-});
-
-
-Route::get('/account/update', function(){
-    return view('account_update');
-});
-
-Route::put('/account', function(){
-    $user = Auth::user();
-    $user->first_name = Input::get('first_name');
-    $user->last_name = Input::get('last_name');
-    $user->contact_number = Input::get('contact');
-    $user->billing_address = Input::get('bill');
-    $user->save();
-
-    return redirect('/account');
-});
+Route::get('/account', 'UserController@showAccount');
+Route::get('/account/update', 'UserController@showUpdateAccount');
+Route::put('/account', 'UserController@updateAccount');
 
 Route::get('/restaurantOwner/addRestaurant', 'RestaurantOwnerController@showAddRestaurant');
 

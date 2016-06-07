@@ -40,6 +40,13 @@
 					<td><strong>Location:</strong></td>
 					<td>
 						<input type="text" name="location" class="form-control">
+						@if ($errors->has('location'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('location') }}</strong>
+							</span>
+						@endif
+	
+
 					</td>
 				</tr>
 
@@ -47,6 +54,12 @@
 					<td> <strong>Email:</strong></td>
 					<td>
 						<input type="text" name="email" class="form-control">
+						@if ($errors->has('email'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('email') }}</strong>
+							</span>
+						@endif
+	
 					</td>
 				</tr>
 
@@ -66,6 +79,12 @@
 					<td> <strong>Website:</strong></td>
 					<td>
 					    <input type="text" name="website" class="form-control">
+						@if ($errors->has('website'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('website') }}</strong>
+							</span>
+						@endif
+	
 					</td>
 				</tr>
 				
@@ -74,6 +93,12 @@
 					<td>
 						<br>
 					    <input type="file" name="image">
+						@if ($errors->has('image'))
+                                    			<span class="help-block">
+                                        			<strong>{{ $errors->first('image') }}</strong>
+							</span>
+						@endif
+	
 					    <br>
 					</td>
 				</tr>

@@ -33,6 +33,12 @@
 					<td><strong>Location:</strong></td>
 					<td>
 						<input type="text" id="location" name="location" value="{{ $restaurants->location }}" class="form-control">
+						@if ($errors->has('location'))
+                                    		<span class="help-block">
+                                        		<strong>{{ $errors->first('location') }}</strong>
+						</span>
+						@endif
+
 					</td>
 				</tr>
 
@@ -40,6 +46,13 @@
 					<td> <strong>Email:</strong></td>
 					<td>
 						<input type="text" id="email" name="email" value="{{ $restaurants->email }}" class="form-control">
+						@if ($errors->has('email'))
+                                    		<span class="help-block">
+                                        		<strong>{{ $errors->first('email') }}</strong>
+						</span>
+						@endif
+
+
 					</td>
 				</tr>
 
@@ -47,6 +60,12 @@
 					<td> <strong>Contact NO:</strong></td>
 					<td>
 						<input type="text" id="contact" name="contact" value="{{ $restaurants->contact_number }}" class="form-control">
+						@if ($errors->has('contact'))
+                                    		<span class="help-block">
+                                        		<strong>{{ $errors->first('contact') }}</strong>
+						</span>
+						@endif
+
 					</td>
 				</tr>
 
@@ -54,6 +73,13 @@
 					<td> <strong>Website:</strong></td>
 					<td>
 					    <input type="text" id="website" name="website" value="{{ $restaurants->website }}" class="form-control">
+					    @if ($errors->has('website'))
+                                    		<span class="help-block">
+                                        		<strong>{{ $errors->first('website') }}</strong>
+						</span>
+						@endif
+
+
 					</td>
 				</tr>
 
@@ -62,6 +88,12 @@
 					<td>
 					<br>
 					    <input type="file" name="image">	
+					    @if ($errors->has('image'))
+                                    		<span class="help-block">
+                                        		<strong>{{ $errors->first('image') }}</strong>
+						</span>
+					    @endif
+
 					<br>
 					</td>
 
