@@ -61,11 +61,11 @@
 <div style="display:inline-block; margin-left:150px">
 	<select name="reservation-time" class="form-control">
 	<!-- $$ Read from database or hardcode? -->
-		<option value="1">07:00PM</option>
-		<option value="2">07:30PM</option>
-		<option value="3">08:00PM</option>
-		<option value="4">08:30PM</option>
-		<option value="5">09:00PM</option>
+		<option value="07:00">07:00PM</option>
+		<option value="07:30">07:30PM</option>
+		<option value="08:00">08:00PM</option>
+		<option value="08:30">08:30PM</option>
+		<option value="09:00">09:00PM</option>
 	</select>
 </div>
 
