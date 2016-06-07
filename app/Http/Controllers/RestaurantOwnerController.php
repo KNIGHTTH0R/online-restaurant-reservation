@@ -221,26 +221,28 @@ class RestaurantOwnerController extends Controller
     }
     public function updateRestaurantTable(Request $req, $table_id)
     {
-    	$table = RestaurantTable::find($table_id);
+	if(\Auth::check() && \Auth::user()->user_type == 1)
+	{
+		$table = RestaurantTable::find($table_id);
 		$rest = Restaurant::find($table->restaurant_id);
-
-		if(\Auth::check() && $rest->owner_id == Auth::user()->id)
+		if($rest->owner_id != Auth::user()->id)
 		{
-		    $this->validate($req, [
-			'num_of_tables' => 'required|integer|min:0',
+		    return redirect('/');
+		}
+
+		$this->validate($req, [
 			'capacity' => 'required|integer|min:0',
 			'booking_fee' => 'required|numeric'
 		    ]) ;
-
-		    $table->capacity = $req->input('capacity');
-		    $table->booking_fee = $req->input('booking_fee');
-		    $table->save();
-		    return redirect()->back();
-		}
-		else
-		{
-		     return redirect('/login');
-		}
+		$table->capacity = $req->input('capacity');
+		$table->booking_fee = $req->input('booking_fee');
+		$table->save();
+		return redirect()->back();
+	}
+	else
+	{
+	     return redirect('/login');
+	}
     }
 
     public function deleteRestaurantTable($id)
