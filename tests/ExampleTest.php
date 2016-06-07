@@ -11,12 +11,12 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    /*public function testBasicExample()
+    public function testBasicExample()
     {
         $this->visit('/')
-             ->see('Laravel 5');
+             ->see('home');
     }
-    */
+    /*
     public function test_owner_can_add_restaurant()
     {
         $user = factory(App\User::class, 'owner')->create();
@@ -29,4 +29,5 @@ class ExampleTest extends TestCase
 	    ->press('Add')
             ->seeInDatabase('restaurant', ['name' => 'Test Restaurant']);
     }
+     */
 }
