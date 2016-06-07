@@ -216,25 +216,10 @@
 					<input type="hidden" name="_token" value = "{{ csrf_token() }}">
 					<tr>
 					<td>
-<<<<<<< HEAD
-						<input type="text" name="menu_name" value="{{ $menu->name  }}" class="form-control">
-					</td>
-				
-					<td>
-						<input type="text" name="menu_price" value="{{ $menu->price }}" class="form-control">
-					</td>
-
-					<td>
-						<input type="text" value="{{ $menu->category }}" class="form-control" readonly>
-					</td>
-
-					<td>
-						<input type="file" name="menu_image">
-=======
 						<input type="text" class="form-control" name="menu_name" value="{{ $menu->name  }}">
 						@if ($errors->has('menu_name'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('menu_name') }}</strong>
+                            <span class="help-block">
+                                <strong>{{ $errors->first('menu_name') }}</strong>
 							</span>
 						@endif
 
@@ -256,8 +241,8 @@
 
 					<td>
 						<input type="file" class="form-control" name="menu_image"/>
->>>>>>> 2cd39d8fa7cc8cc59fbaa1500f64084be8d1aa7a
 					</td>
+
 					<td>
 					  <input type="submit" value="Update Food Menu">
 
@@ -290,17 +275,10 @@
 			<tbody>
 				<tr>
 					<td>
-<<<<<<< HEAD
-						<input type="text"  name="new_menu_name" class="form-control">
-					</td>
-				
-					<td>
-						<input type="text"  name="new_menu_price" class="form-control">
-=======
 						<input type="text"  name="new_menu_name">
 						@if ($errors->has('new_menu_name'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('new_menu_name') }}</strong>
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('new_menu_name') }}</strong>
 							</span>
 						@endif
 
@@ -309,12 +287,10 @@
 					<td>
 						<input type="text"  class="form-control" name="new_menu_price">
 						@if ($errors->has('new_menu_price'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('new_menu_price') }}</strong>
+                            <span class="help-block">
+                                <strong>{{ $errors->first('new_menu_price') }}</strong>
 							</span>
 						@endif
-
->>>>>>> 2cd39d8fa7cc8cc59fbaa1500f64084be8d1aa7a
 					</td>
 					
 					<td>
@@ -327,11 +303,8 @@
 					</td>
 
 					<td>
-<<<<<<< HEAD
-						<input type="file" name="new_menu_image">
-=======
+
 						<input type="file"  class="form-control" name="new_menu_image"/>
->>>>>>> 2cd39d8fa7cc8cc59fbaa1500f64084be8d1aa7a
 
 					</td>
 				</tr>
