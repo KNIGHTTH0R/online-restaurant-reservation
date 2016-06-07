@@ -19,7 +19,8 @@
 		</thead>	
 
 		<tbody>
-			<form action="{{ url('/').'/book/'.$restaurant_id }}" method="POST">
+			<!--<form action="{{ url('/').'/book/'.$restaurant_id }}" method="POST">-->
+			<form action="{{ url('/payment') }}" method="POST">
 				{{ csrf_field() }}
 
 				@foreach($available_tables as $available_table)

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use config
+use Config;
 
 use App\Http\Requests;
 

@@ -61,13 +61,13 @@ Route::delete('/restaurant_info_update/delete_food_menu/{id}', 'RestaurantOwnerC
 
 Route::post('payment', array(
     'as' => 'payment',
-    'uses' => 'TransactionController@postPayment',
+    'uses' => 'BookingController@postPayment',
 ));
 
 // this is after make the payment, PayPal redirect back to your site
 Route::get('payment/status', array(
     'as' => 'payment.status',
-    'uses' => 'TransactionController@getPaymentStatus',
+    'uses' => 'BookingController@getPaymentStatus',
 ));
 Route::post('book', 'BookingController@book');
 
