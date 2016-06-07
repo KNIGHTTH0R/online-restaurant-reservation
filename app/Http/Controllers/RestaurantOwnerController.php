@@ -63,7 +63,7 @@ class RestaurantOwnerController extends Controller
 	    $rest->description = $req->input('desc');
 	    $this->validate($req, [
 		'location' => 'required',
-		'contact' => 'required',
+		'contact' => 'required|integer',
 		'email' => 'email'
 	    ]) ;
 	    if($req->hasFile('image') && $req->file('image')->isValid()){
