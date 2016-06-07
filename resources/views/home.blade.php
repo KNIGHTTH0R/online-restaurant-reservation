@@ -139,35 +139,21 @@
 		        <div class="Most Popular Places">
 		        	<h2>Most Popular Places</h2>
 		        	<table>
-		        		<thead>
-		        			<tr>
-		        				<th style="width: 50%"></th>
-		        				<th style="width: 50%"></th>
-		        			</tr>
-		        		</thead>
 		        		<tbody>
 		        			<!--<tr><h4 style="color: blue">Comic Cafe</h4></tr> -->
-		        			<tr>
+						@foreach ($popular_restaurants as $popular)	        			
+						<tr>
 		        				
 			        			<td  style="align: left valign:center">
-			        				<br /> <h4 style="color: #6E0569">Comic Cafe</h4>
-			        				<a href="Comic Cafe"><img src="{{ asset('img/Comic-Cafe.jpg') }}" class="img-responsive"/></a>
+			        				<br /> <h4 style="color: #6E0569"> {{ $popular->name }} </h4>
+			        				<a href="{{ url('/').'/restaurants/'.$popular->id }}"><img src="{{ asset('img/'.$popular->img_name) }}" class="img-responsive" style = "height:250px; width:400px"/></a>
 			        				
 			        			</td>
 			        		</tr>
-
+						
 			        		<tr> </tr>
-
-			        		<!-- <tr><h4 style="color: blue">Pit Grill</h4></tr> -->
-
-			        		<tr>
-			        			<td>
-			        				<br /> <h4 style="color: #6E0569">Pit Grill</h4>
-			        				<a href="Pit Grill"><img src="{{ asset('img/pitGrill.jpg') }}" class="img-responsive" /></a>
-			        			</td>
-			        			
-			        		</tr>
-		        		</tbody>
+						@endforeach
+			        	</tbody>
 		        	</table>
 		        </div>
 	        

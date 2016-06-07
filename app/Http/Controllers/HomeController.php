@@ -37,7 +37,7 @@ class HomeController extends Controller
             
             return ['user_name' => $user_name, 'restaurant_name' => $restaurant_name, 'review_text' => $item->review_text, 'rating' => $item->rating];
 	});
-	
-        return view('home', ['restaurant_categories' => Restaurant_Category::all(), 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
+	$popular = Restaurant::where('featured', true)->take(2)->get();
+        return view('home', ['restaurant_categories' => Restaurant_Category::all(), 'popular_restaurants' => $popular, 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
     }
 }

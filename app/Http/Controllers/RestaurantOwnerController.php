@@ -63,7 +63,7 @@ class RestaurantOwnerController extends Controller
 	    $rest->description = $req->input('desc');
 	    $this->validate($req, [
 		'location' => 'required',
-		'contact' => 'required|integer',
+		'contact' => 'required|numeric',
 		'email' => 'email'
 	    ]) ;
 	    if($req->hasFile('image') && $req->file('image')->isValid()){
@@ -138,7 +138,7 @@ class RestaurantOwnerController extends Controller
 	    }
 	    $this->validate($req, [
 		'menu_name' => 'required',
-		'menu_price' => 'required|numeric',
+		'menu_price' => 'required|numeric|min:0',
 	    ]);
 	    $food_menu->save();
 	    return redirect()->back();
@@ -192,8 +192,8 @@ class RestaurantOwnerController extends Controller
 		return redirect('/');
 	    }
 	    $this->validate($req, [
-		'new_num_of_tables' => 'required|integer',
-		'new_capacity' => 'required|integer',
+		'new_num_of_tables' => 'required|integer|min:0',
+		'new_capacity' => 'required|numeric|min:1',
 		'new_booking_fee' => 'required|numeric'
 	    ]) ;
 
@@ -224,8 +224,8 @@ class RestaurantOwnerController extends Controller
 		if(\Auth::check() && $rest->owner_id == Auth::user()->id)
 		{
 		    $this->validate($req, [
-			'num_of_tables' => 'required|integer',
-			'capacity' => 'required|integer',
+			'num_of_tables' => 'required|integer|min:0',
+			'capacity' => 'required|integer|min:0',
 			'booking_fee' => 'required|numeric'
 		    ]) ;
 
