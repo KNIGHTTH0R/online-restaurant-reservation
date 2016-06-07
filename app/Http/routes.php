@@ -60,3 +60,5 @@ Route::delete('/restaurant_info_update/delete_table/{id}', 'RestaurantOwnerContr
 Route::delete('/restaurant_info_update/delete_food_menu/{id}', 'RestaurantOwnerController@deleteFoodMenu');
 
 Route::post('book', 'BookingController@book');
+
+Route::post('book/{id}', 'BookingController@reserveTables');
