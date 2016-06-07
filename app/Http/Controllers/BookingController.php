@@ -22,6 +22,15 @@ class BookingController extends Controller
 		///Do query here
 		$available_tables = DB::select('select * from restaurant_table where restaurant_id = ? and id not in (select distinct rt.table_number from reservation rv join reservation_table rt on rv.id = rt.reservation_id where rv.reservation_date = ? and rv.reservation_time_slot = ?)', [$rest_id, $reservation_date, $reservation_time]);
 
-		return view('restaurant.book_table', ['available_tables' => $available_tables]);
+		return view('restaurant.book_table', ['available_tables' => $available_tables, 'restaurant_id' => $rest_id]);
+    }
+
+    public function reserveTables(Request $req){
+    	foreach ($req->all() as $key => $value) {
+		 	if($key == "_token");
+		 	else{
+		 		
+		 	}
+		}
     }
 }

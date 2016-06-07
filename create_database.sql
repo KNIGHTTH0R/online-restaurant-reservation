@@ -164,7 +164,7 @@ insert into users (user_name, user_type, first_name, last_name, contact_number, 
 ("Tripto001", 0, "Tripto", "Irtiza", "017", "Mymensingh", "real", "");
 
 insert into restaurant (name, location, owner_id, contact_number) values ("KFC", "Dhanmondi", 1, "123456");
-insert into restaurant (name, location, owner_id, contact_number, img_name) values ("Gloria Jeans Coffe", "Gulshan", 3, "123456", "Gloria_Jeans_Coffee.jpg");
+insert into restaurant (name, location, owner_id, contact_number, img_name) values ("Gloria Jeans Coffee", "Gulshan", 3, "123456", "Gloria_Jeans_Coffee.jpg");
 insert into restaurant (name, location, owner_id, contact_number, img_name) values ("The Atrium Restaurant", "Baridhara", 4, "123456", "Restaurant-Atrium-003.jpg");
 
 insert into offered_category values((select id from restaurant_category where category_name = "Fast Food"),(select id from restaurant where name = "KFC"));

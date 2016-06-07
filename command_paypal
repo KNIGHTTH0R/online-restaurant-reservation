@@ -1,0 +1,7 @@
+composer update --no-dev
+apt-get install php5-curl
+composer update --no-dev
+composer install --no-dev
+composer install
+composer install --no-dev
+
