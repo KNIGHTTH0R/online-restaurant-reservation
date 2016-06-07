@@ -218,28 +218,49 @@ class RestaurantOwnerController extends Controller
     }
     public function updateRestaurantTable(Request $req, $table_id)
     {
-	if(\Auth::check() && \Auth::user()->user_type == 1)
-	{
-	    $table = RestaurantTable::find($table_id);
-	    $rest = Restaurant::find($table->restaurant_id);
-	    if($rest->owner_id != Auth::user()->id)
-	    {
-		return redirect('/');
-	    }
-	    $this->validate($req, [
-		'num_of_tables' => 'required|integer',
-		'capacity' => 'required|integer',
-		'booking_fee' => 'required|numeric'
-	    ]) ;
+    	$table = RestaurantTable::find($table_id);
+		$rest = Restaurant::find($table->restaurant_id);
 
-	    $table->capacity = $req->input('capacity');
-	    $table->booking_fee = $req->input('booking_fee');
-	    $table->save();
-	    return redirect()->back();
-	}
-	else
-	{
-	     return redirect('/login');
-	}
+		if(\Auth::check() && $rest->owner_id == Auth::user()->id)
+		{
+		    $this->validate($req, [
+			'num_of_tables' => 'required|integer',
+			'capacity' => 'required|integer',
+			'booking_fee' => 'required|numeric'
+		    ]) ;
+
+		    $table->capacity = $req->input('capacity');
+		    $table->booking_fee = $req->input('booking_fee');
+		    $table->save();
+		    return redirect()->back();
+		}
+		else
+		{
+		     return redirect('/login');
+		}
+    }
+
+    public function deleteRestaurantTable($id)
+    {
+    	$table = RestaurantTable::find($id);
+		$rest = Restaurant::find($table->restaurant_id);
+
+		if(\Auth::check() && $rest->owner_id == Auth::user()->id){
+			$table->delete();
+		}
+		return redirect()->back();
+
+    }
+
+    public function deleteFoodMenu($id)
+    {
+    	$food_menu = Food_Menu::find($id);
+		$rest = Restaurant::find($food_menu->restaurant_id);
+
+		if(\Auth::check() && $rest->owner_id == Auth::user()->id){
+			$food_menu->delete();
+		}
+		return redirect()->back();
+
     }
 }

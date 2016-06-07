@@ -135,8 +135,8 @@
 						<td>
 							<input type="text" name="capacity" value="{{ $table->capacity }}" class="form-control">
 							@if ($errors->has('capacity'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('capacity') }}</strong>
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('capacity') }}</strong>
 							</span>
 						@endif
 
@@ -146,16 +146,29 @@
 						<td>
 							<input type="text" name="booking_fee" value="{{ $table->booking_fee }}" class="form-control">
 							@if ($errors->has('booking_fee'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('booking_fee') }}</strong>
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('booking_fee') }}</strong>
 							</span>
 						@endif	
 						</td>
 						<td>
 							<input type="submit" value="Update">
 						</td>
+
+						</form>
+
+						
+
+						<td>
+							<form action="{{ url('/').'/restaurant_info_update/delete_table/'.$table->id }}" method="POST">
+								<input type="hidden" name="_token" value="{{ csrf_token() }}">
+								<input type="hidden" name="_method" value="DELETE">
+								<input type="submit" value="Delete">
+							</form>
+
+						</td>
 					</tr>
-				</form>
+
 				@endforeach
 			</tbody>
 
@@ -191,8 +204,8 @@
 					<td>
 						<input type="text"  name="new_capacity" class="form-control">
 						@if ($errors->has('new_capacity'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('new_capacity') }}</strong>
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('new_capacity') }}</strong>
 							</span>
 						@endif
 
@@ -202,8 +215,8 @@
 						<input type="text"  name="new_booking_fee" class="form-control">
 	
 						@if ($errors->has('new_booking_fee'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('new_booking_fee') }}</strong>
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('new_booking_fee') }}</strong>
 							</span>
 						@endif				
 					</td>
@@ -212,8 +225,8 @@
 						<input type="text"  name="new_num_of_tables" class="form-control">
 						
 						@if ($errors->has('new_num_of_tables'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('new_num_of_tables') }}</strong>
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('new_num_of_tables') }}</strong>
 							</span>
 						@endif
 					</td>
@@ -260,8 +273,8 @@
 					<td>
 						<input type="text" class="form-control" name="menu_price" value="{{ $menu->price }}">
 						@if ($errors->has('menu_price'))
-                                    			<span class="help-block">
-                                        			<strong>{{ $errors->first('menu_price') }}</strong>
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('menu_price') }}</strong>
 							</span>
 						@endif
 
@@ -277,9 +290,20 @@
 
 					<td>
 					  <input type="submit" value="Update Food Menu">
+					</td>
+
+					</form>
+
+					<td>
+						<form action="{{ url('/').'/restaurant_info_update/delete_food_menu/'.$menu->id }}"" method="POST">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<input type="hidden" name="_method" value="DELETE">
+							<input type="submit" value="Delete">
+						</form>
+					</td>
 
 					</tr>
-				</form>
+
 				@endforeach
 			</tbody>
 

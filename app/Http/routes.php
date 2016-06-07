@@ -52,3 +52,7 @@ Route::post('/restaurant_info_update/add_food_menu/{id}', 'RestaurantOwnerContro
 Route::post('/restaurant_info_update/update_food_menu/{menu_id}', 'RestaurantOwnerController@updateFoodMenu');
 
 Route::post('book', 'BookingController@book');
+
+Route::delete('/restaurant_info_update/delete_table/{id}', 'RestaurantOwnerController@deleteRestaurantTable');
+
+Route::delete('/restaurant_info_update/delete_food_menu/{id}', 'RestaurantOwnerController@deleteFoodMenu');
