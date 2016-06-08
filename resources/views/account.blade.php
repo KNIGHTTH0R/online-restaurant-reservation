@@ -52,7 +52,7 @@
 	</table>
 
 	<p>
-		<a href="{{ url('/').'/account/update' }}"> <h4>Update</h4> </a>
+		<a href="{{ url('/').'/account/update' }}"> <h4>Update Account</h4> </a>
 	</p>
 
 	@if(Auth::user()->user_type == 1)
@@ -84,7 +84,7 @@
 					</td>
 
 					<td>
-						<a href="{{ url('/').'/restaurant_info_update/'.$restaurant->id }}"> <h4>Update</h4> </a>
+						<a href="{{ url('/').'/restaurant_info_update/'.$restaurant->id }}"> <h4>Update {{ $restaurant->name }} </h4> </a>
 					</td>
 
 				</tr>

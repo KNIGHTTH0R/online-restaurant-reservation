@@ -9,7 +9,7 @@ class Restaurant extends Model
     //
     protected $table = 'restaurant';
     public $timestamps = false;
-    protected $fillable = ['name', 'location', 'email', 'contact_number', 'website', 'parking_available', 'description'];
+    protected $fillable = ['owner_id', 'name', 'location', 'email', 'contact_number', 'website', 'parking_available', 'description'];
     public function reviews()
     {
         return $this->hasMany('App\Review', 'restaurant_id');
@@ -27,5 +27,10 @@ class Restaurant extends Model
     public function cuisines()
     {
         return $this->belongsToMany('App\Cuisine', 'offered_cuisine', 'cuisine_id', 'restaurant_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'owner_id');
     }
 }
