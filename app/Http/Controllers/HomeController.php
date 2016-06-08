@@ -66,4 +66,9 @@ class HomeController extends Controller
     {
         return view('policy');
     }
+
+    public function howtobook()
+    {
+        return view('howto');
+    }
 }

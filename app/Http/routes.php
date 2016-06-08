@@ -22,6 +22,7 @@ Route::get('/termsofuse', 'HomeController@termsofuse');
 Route::get('/faq', 'HomeController@faq');
 Route::get('/contactus', 'HomeController@contactus');
 Route::get('/policy', 'HomeController@policy');
+Route::get ('/howtobook', 'HomeController@howtobook');
 
 
 Route::get('/', 'HomeController@index');
