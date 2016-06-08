@@ -46,17 +46,19 @@
 	</div-->
 		
 		<!-- Input restaurant name -->
-	<div class="form-group" style="padding-left: 300px; display: inline-block">
+	<div class="form-group" style="padding-left: 320px; display: inline-block">
 		<input type="text" name="name" style="display:inline-block" class="form-control" id="restaurant-name" placeholder="Restaurant Name">
 	</div>
+
+
 		
 		<!-- Input location -->
-	<div class="form-group" style="display:inline-block">
+	<div class="form-group" style="display:inline-block; padding-left: 20px">
 		<input type="text" name="location" style="display:inline-block" class="form-control" id="location-id" placeholder="Location">
 	</div>
 		
 		<!-- Restaurant/Food category -->
-		<div style="display:inline-block">
+		<div style="display:inline-block; padding-left: 20px">
 			<select name="cuisine" class="form-control">
 				<option value="none">Select Cuisine</option>
 				@foreach($cuisines as $cuisine)
@@ -68,7 +70,7 @@
 		<!-- search button -->
 		
 		
-	<div style="display:inline-block">
+	<div style="display:inline-block; padding-left: 20px">
 		<button type="submit" class="btn-default btn-lg">Search</button>
 	</div>
 	
