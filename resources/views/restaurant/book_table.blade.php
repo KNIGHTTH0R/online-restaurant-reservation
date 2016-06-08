@@ -22,7 +22,9 @@
 			<!--<form action="{{ url('/').'/book/'.$restaurant_id }}" method="POST">-->
 			<form action="{{ url('/payment') }}" method="POST">
 				{{ csrf_field() }}
-
+				<input type="hidden" name="timeslot" value="{{ $timeslot }}">
+				<input type="hidden" name="reservation_date" value="{{ $reservation_date }}">
+				<input type="hidden" name="restaurant_id" value="{{ $restaurant_id }}">
 				@foreach($available_tables as $available_table)
 				<tr>
 					<td>{{ $available_table->capacity }}</td>

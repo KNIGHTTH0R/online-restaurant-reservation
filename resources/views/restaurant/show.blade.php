@@ -32,7 +32,7 @@
 		    
 		    <form action="{{ url('book') }}" method="POST">
 			    {{ csrf_field() }}
-		    <input type="hidden" name="restaurant-id" value="{{ $restaurant->id }}">
+		    <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
 		    <div style="padding-top: 15px; display:inline-block">
 			    <select name="num-of-persons" class="form-control">
 			    <!-- $$ Read from database or hardcode? -->
@@ -53,13 +53,13 @@
 		<!-- datepicker -->
 		<div class="container" style="display:inline-block; width:70px">
 			<div class="hero-unit" style="width:50px">
-			<input  type="text" name="reservation-date" placeholder="choose date"  id="example1">
+			<input  type="text" name="reservation_date" placeholder="choose date"  id="example1">
 		</div>
 	</div>
 </div>
 
 <div style="display:inline-block; margin-left:150px">
-	<select name="reservation-time" class="form-control">
+	<select name="reservation_time" class="form-control">
 	<!-- $$ Read from database or hardcode? -->
 		<option value="07:00">07:00PM</option>
 		<option value="07:30">07:30PM</option>
