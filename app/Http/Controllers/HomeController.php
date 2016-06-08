@@ -41,4 +41,29 @@ class HomeController extends Controller
 	$popular = Restaurant::where('featured', true)->take(2)->get();
         return view('home', ['cuisines' => Cuisine::all(), 'popular_restaurants' => $popular, 'featured_restaurants' => $featured, 'recent_reviews' => $r_r]);
     }
+
+    public function aboutus()
+    {
+        return view('aboutus');
+    }
+
+    public function termsofuse()
+    {
+        return view('termsofuse');
+    }
+
+    public function faq()
+    {
+        return view('faq');
+    }
+
+    public function contactus()
+    {
+        return view('contactus');
+    }
+
+    public function policy()
+    {
+        return view('policy');
+    }
 }

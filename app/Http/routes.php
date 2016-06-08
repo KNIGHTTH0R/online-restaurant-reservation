@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Input;
 use App\Restaurant;
 use App\RestaurantTable;
 
+Route::get('/aboutus', 'HomeController@aboutus');
+Route::get('/termsofuse', 'HomeController@termsofuse');
+Route::get('/faq', 'HomeController@faq');
+Route::get('/contactus', 'HomeController@contactus');
+Route::get('/policy', 'HomeController@policy');
+
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index');
