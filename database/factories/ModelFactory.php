@@ -25,3 +25,4 @@ $factory->defineAs(App\User::class, 'owner', function ($faker) use ($factory){
 
 	return array_merge($user, ['user_type' => 1]);
 });
+
