@@ -37,24 +37,27 @@ class BookingController extends Controller
     //
     	public function book(Request $req)
     	{
-		$rest_id = $req->input('restaurant-id');
+		$rest_id = $req->input('restaurant_id');
 		$num_of_persons =  $req->input('num-of-persons');
-		//$reservation_date =  date_format(date_create_from_format('d/m/Y', $req->input('reservation-date')),"Y-m-d");
-		$reservation_date = $req->input('reservation_date');		
+		$reservation_date =  date_format(date_create_from_format('d/m/Y', $req->input('reservation_date')),"Y-m-d");
+		//$reservation_date = $req->input('reservation_date');		
 		$reservation_time =  $req->input('reservation_time');
+		
 		
 
 		///Do query here
-		$available_tables = DB::select('select * from restaurant_table where capacity >= ?  and restaurant_id = ? and id not in (select distinct rt.table_number from reservation rv join reservation_table rt on rv.id = rt.reservation_id where rv.reservation_date = ? and rv.reservation_time_slot = ?)', [$num_of_persons, $rest_id, $reservation_date, $reservation_time]);
+		$suitable_tables = DB::select('select * from restaurant_table where capacity >= ?  and restaurant_id = ? and id not in (select distinct rt.table_number from reservation rv join reservation_table rt on rv.id = rt.reservation_id where rv.reservation_date = ? and rv.reservation_time_slot = ?)', [$num_of_persons, $rest_id, $reservation_date, $reservation_time]);
 
-		return view('restaurant.book_table', ['available_tables' => $available_tables, 'restaurant_id' => $rest_id, 'timeslot' => $req->input('reservation_time'), 'reservation_date' => $req->input('reservation_date')]);
-    	}
+		$other_free_tables = DB::select('select * from restaurant_table where capacity < ?  and restaurant_id = ? and id not in (select distinct rt.table_number from reservation rv join reservation_table rt on rv.id = rt.reservation_id where rv.reservation_date = ? and rv.reservation_time_slot = ?)', [$num_of_persons, $rest_id, $reservation_date, $reservation_time]);
+
+		return view('restaurant.book_table', ['suitable_tables' => $suitable_tables, 'other_free_tables' => $other_free_tables, 'restaurant_id' => $rest_id, 'timeslot' => $reservation_time, 'reservation_date' => $reservation_date, 'restaurant_id' => $req->input('restaurant_id')]);
+    }
 
     	public function reserveTables(Request $req){
 		foreach ($req->all() as $key => $value) {
 		 	if($key == "_token");
 		 	else{
-		 		
+		 		echo $key.'\n';
 		 	}
 		}
    	}
@@ -72,7 +75,6 @@ class BookingController extends Controller
 	
 	public function postPayment(Request $req)
 	{
-
 	    $payer = new Payer();		///
 	    $payer->setPaymentMethod('paypal'); ///
 		$table_ids = array();
@@ -176,18 +178,6 @@ class BookingController extends Controller
 		->with('error', 'Unknown error occurred');	/// redirect back to the suitable page if error occurs
 	}
 	
-
-
-
-
-
-
-
-
-
-
-
-
 
 	public function getPaymentStatus()
 	{

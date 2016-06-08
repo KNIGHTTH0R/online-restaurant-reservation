@@ -37,7 +37,7 @@
 
 		<p></p>
 		<p>
-			<input type="submit" value="Update">
+			<input type="submit" value="Update Account">
 		</p>
 	</form>
 </div>

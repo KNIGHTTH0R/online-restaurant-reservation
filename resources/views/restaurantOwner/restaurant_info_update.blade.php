@@ -100,8 +100,9 @@
    			</tbody>
 
 		</table>
-
-		<input type="submit" value="Update">
+		<br>
+		<input type="submit" value="Update General Info">
+		<br>
 	</form>
 
 	<form action="{{ url('/').'/restaurant_info_update/add_cuisine/'.$restaurants->id }}" method="POST" role="form">
