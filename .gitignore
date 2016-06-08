@@ -31,5 +31,5 @@ storage/
 *.swp
 
 # Images
-/public/img
+#/public/img
 
