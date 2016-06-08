@@ -8,8 +8,8 @@
 <form action="{{ url('search') }}" method="POST">
 	{{ csrf_field() }}
 	
-	<div class="person-date-select"  style="padding-left: 150px; display: inline-block;">
-   	<div style="display:inline-block">
+	<!--div class="person-date-select"  style="padding-left: 150px; display: inline-block;"-->
+   	<!--div style="display:inline-block">
 			<select name="num-of-persons" class="form-control">
 				<option value="1">Reserve For 1</option>
 				<option value="2">Reserve For 2</option>
@@ -22,20 +22,20 @@
 				<option value="9">Reserve For 9</option>
 				<option value="10">Reserve For 10</option>
 			</select>
-    	</div>
+    	</div-->
 			
-    	<div style="display:inline-block;">
+    	<!--div style="display:inline-block;"-->
     <!-- datepicker -->
-			<div class="container" style="display:inline-block; width:180px">
-            <div class="hero-unit" style="width:180px">
-					<input  type="text" name="reservation-date" placeholder="choose date"  id="example1">
-	    		</div>
+			<!--div class="container" style="display:inline-block; width:180px">
+	            <div class="hero-unit" style="width:180px">
+						<input  type="text" name="reservation-date" placeholder="choose date"  id="example1">
+		    	</div>
 			</div>
-    	</div>
-	</div>
+    	</div-->
+	<!--/div-->
 		
 		<!-- time selection -->
-	<div style="display:inline-block;">
+	<!--div style="display:inline-block;">
 		<select name="reservation-time" class="form-control">
 			<option value="1">07:00PM</option>
 			<option value="2">07:30PM</option>
@@ -43,10 +43,10 @@
 			<option value="4">08:30PM</option>
 			<option value="5">09:00PM</option>
 		</select>	
-	</div>
+	</div-->
 		
 		<!-- Input restaurant name -->
-	<div class="form-group" style="display:inline-block">
+	<div class="form-group" style="padding-left: 300px; display: inline-block">
 		<input type="text" name="name" style="display:inline-block" class="form-control" id="restaurant-name" placeholder="Restaurant Name">
 	</div>
 		
