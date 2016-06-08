@@ -32,4 +32,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Review', 'user_id');  
     }
+
+    public function restaurants()
+    {
+        return $this->hasMany('App\Restaurant', 'owner_id', 'id');
+    }
 }

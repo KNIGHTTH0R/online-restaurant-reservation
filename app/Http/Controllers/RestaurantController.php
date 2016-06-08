@@ -49,7 +49,7 @@ class RestaurantController extends Controller
     	$timeslot = $request->input('reservation-time');
     	$num_of_persons = $request->input('num-of-persons');
         
-        $query =  Restaurant::from('restaurant as r');
+        $query =  Restaurant::from('restaurant as r')->select('r.*');
 
     	if(strlen($location) != 0)
         {

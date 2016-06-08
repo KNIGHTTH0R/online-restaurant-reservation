@@ -25,3 +25,12 @@ $factory->defineAs(App\User::class, 'owner', function ($faker) use ($factory){
 
 	return array_merge($user, ['user_type' => 1]);
 });
+
+$factory->define(App\Restaurant::class, function(Faker\Generator $faker) {
+	return [
+		'name' => 'Test Restaurant',
+		'location' => 'Test Location',
+		'contact_number' => '1234'
+	];
+});
+

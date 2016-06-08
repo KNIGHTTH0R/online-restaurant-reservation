@@ -25,7 +25,7 @@
 				<tr>
 					<td><strong>Name:</strong></td>
 					<td>
-						<p>{{ $restaurants->name  }}</p>
+						<p>{{ $restaurants->name }}</p>
 					</td>
 				</tr>
 				
@@ -34,11 +34,10 @@
 					<td>
 						<input type="text" id="location" name="location" value="{{ $restaurants->location }}" class="form-control">
 						@if ($errors->has('location'))
-                                    		<span class="help-block">
-                                        		<strong>{{ $errors->first('location') }}</strong>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('location') }}</strong>
 						</span>
 						@endif
-
 					</td>
 				</tr>
 
@@ -47,12 +46,10 @@
 					<td>
 						<input type="text" id="email" name="email" value="{{ $restaurants->email }}" class="form-control">
 						@if ($errors->has('email'))
-                                    		<span class="help-block">
-                                        		<strong>{{ $errors->first('email') }}</strong>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
 						</span>
 						@endif
-
-
 					</td>
 				</tr>
 
@@ -61,11 +58,10 @@
 					<td>
 						<input type="text" id="contact" name="contact" value="{{ $restaurants->contact_number }}" class="form-control">
 						@if ($errors->has('contact'))
-                                    		<span class="help-block">
-                                        		<strong>{{ $errors->first('contact') }}</strong>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('contact') }}</strong>
 						</span>
 						@endif
-
 					</td>
 				</tr>
 
@@ -74,12 +70,10 @@
 					<td>
 					    <input type="text" id="website" name="website" value="{{ $restaurants->website }}" class="form-control">
 					    @if ($errors->has('website'))
-                                    		<span class="help-block">
-                                        		<strong>{{ $errors->first('website') }}</strong>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('website') }}</strong>
 						</span>
 						@endif
-
-
 					</td>
 				</tr>
 
@@ -89,15 +83,14 @@
 					<br>
 					    <input type="file" name="image">	
 					    @if ($errors->has('image'))
-                                    		<span class="help-block">
-                                        		<strong>{{ $errors->first('image') }}</strong>
+                        <span class="help-block">
+                            <strong>{{ $errors->first('image') }}</strong>
 						</span>
 					    @endif
-
 					<br>
 					</td>
+				</tr>
 
-				</tr> 
 				<tr>
 					<td> <strong>Description:</strong></td>
 					<td>
@@ -107,8 +100,9 @@
    			</tbody>
 
 		</table>
-
-		<input type="submit" value="Update">
+		<br>
+		<input type="submit" value="Update General Info">
+		<br>
 	</form>
 
 	<form action="{{ url('/').'/restaurant_info_update/add_cuisine/'.$restaurants->id }}" method="POST" role="form">
@@ -143,75 +137,67 @@
 	    
 	</form>
 	
-		<p> <br> <br> </p>
-		<h4> Update Existing Tables </h4>
-		<br>
+	<p> <br> <br> </p>
+	<h4> Update Existing Tables </h4>
+	<br>
 
-		<table>
-			<col width="120">
-	  		<col width="120">
+	<table>
+		<col width="120">
+  		<col width="120">
 
-			<thead>
-				<tr>
-					<th> Capacity </th>
-					<th> Booking Fee</th>
-				</tr>
-			</thead>
+		<thead>
+			<tr>
+				<th> Capacity </th>
+				<th> Booking Fee</th>
+			</tr>
+		</thead>
 
-			<tbody>
-				<!-- Restaurant id has to be passed from controller/prev page -->
-				@foreach ($restaurant_tables as $table)
-			    	<form action="{{ url('/').'/restaurant_info_update/update_table/'.$table->id }}" method="POST" role="form">
-					<input type="hidden" name="_token" value = "{{ csrf_token() }}">
-					<tr>
-						<td>
-							<input type="text" name="capacity" value="{{ $table->capacity }}" class="form-control">
-							@if ($errors->has('capacity'))
-                            <span class="help-block">
-                            	<strong>{{ $errors->first('capacity') }}</strong>
-							</span>
-						@endif
+		<tbody>
+			<!-- Restaurant id has to be passed from controller/prev page -->
+			@foreach ($restaurant_tables as $table)
+	    	<tr>
+	    	<form action="{{ url('/').'/restaurant_info_update/update_table/'.$table->id }}" method="POST" role="form">
+			<input type="hidden" name="_token" value = "{{ csrf_token() }}">
+			
+				<td>
+					<input type="text" name="capacity" value="{{ $table->capacity }}" class="form-control">
+					@if ($errors->has('capacity'))
+                	<span class="help-block">
+                		<strong>{{ $errors->first('capacity') }}</strong>
+					</span>
+					@endif
+				</td>
+			
+				<td>
+					<input type="text" name="booking_fee" value="{{ $table->booking_fee }}" class="form-control">
+					@if ($errors->has('booking_fee'))
+                	<span class="help-block">
+                		<strong>{{ $errors->first('booking_fee') }}</strong>
+					</span>
+					@endif	
+				</td>
+				
+				<td>
+					<input type="submit" value="Update">
+				</td>
 
+			</form>
 
-						</td>
-					
-						<td>
-							<input type="text" name="booking_fee" value="{{ $table->booking_fee }}" class="form-control">
-							@if ($errors->has('booking_fee'))
-                            <span class="help-block">
-                            	<strong>{{ $errors->first('booking_fee') }}</strong>
-							</span>
-						@endif	
-						</td>
-						<td>
-							<input type="submit" value="Update">
-						</td>
+				<td>
+					<form action="{{ url('/').'/restaurant_info_update/delete_table/'.$table->id }}" method="POST">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="_method" value="DELETE">
+						<input type="submit" value="Delete">
+					</form>
 
-						</form>
+				</td>
+			</tr>
 
-						
+			@endforeach
+		</tbody>
 
-						<td>
-							<form action="{{ url('/').'/restaurant_info_update/delete_table/'.$table->id }}" method="POST">
-								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<input type="hidden" name="_method" value="DELETE">
-								<input type="submit" value="Delete">
-							</form>
+	</table>
 
-						</td>
-					</tr>
-
-				@endforeach
-			</tbody>
-
-		</table>
-<!--
-		<p></p>
-		<p>
-			<input type="submit" value="Update Tables">
-		</p>
--->
-	
 	<form action="{{ url('/').'/restaurant_info_update/add_table/'.$restaurants->id }}" method="POST" role="form">
 	    <input type="hidden" name="_token" value = "{{ csrf_token() }}">
 	    <p><br><br></p>
@@ -313,11 +299,16 @@
 					</td>
 
 					<td>
-						<input type="text"  class="form-control" value={{ $menu->category }} class="field left" readonly>
+						<input type="text"  class="form-control" value="{{ $menu->category }}" class="field left" readonly>
 					</td>
 
 					<td>
 						<input type="file" class="form-control" name="menu_image"/>
+						@if ($errors->has('menu_image'))
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('menu_image') }}</strong>
+							</span>
+						@endif
 					</td>
 
 					<td>
@@ -327,7 +318,7 @@
 					</form>
 
 					<td>
-						<form action="{{ url('/').'/restaurant_info_update/delete_food_menu/'.$menu->id }}"" method="POST">
+						<form action="{{ url('/').'/restaurant_info_update/delete_food_menu/'.$menu->id }}" method="POST">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<input type="hidden" name="_method" value="DELETE">
 							<input type="submit" value="Delete">
@@ -393,6 +384,11 @@
 					<td>
 
 						<input type="file"  class="form-control" name="new_menu_image"/>
+						@if ($errors->has('new_menu_image'))
+                            <span class="help-block">
+                            	<strong>{{ $errors->first('new_menu_image') }}</strong>
+							</span>
+						@endif
 
 					</td>
 				</tr>
